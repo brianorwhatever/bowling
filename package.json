@@ -1,0 +1,31 @@
+{
+  "name": "bowling",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "react-dom": "~0.14.6",
+    "babelify": "~7.2.0",
+    "react": "~0.14.6",
+    "babel-preset-react": "~6.3.13",
+    "redux": "~3.0.6",
+    "react-redux": "~4.0.6"
+  },
+  "devDependencies": {
+    "redux-devtools": "~3.0.1",
+    "babelify": "~5.0.3",
+    "browser-sync": "^1.7.1",
+    "browserify": "^6.3.3",
+    "gulp": "~3.9.0",
+    "gulp-rename": "^1.2.0",
+    "lodash": "^2.4.1",
+    "rimraf": "~2.2.8",
+    "watchify": "^2.1.1",
+    "vinyl-source-stream": "^1.0.0"
+  }
+}
