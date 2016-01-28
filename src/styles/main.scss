@@ -1,0 +1,37 @@
+@import 'reset';
+
+/* Main styles */
+
+body {
+  
+}
+
+$blue: rgba(78, 110, 255, 1);
+$white: rgba(255,255,255,1);
+
+.score-container {
+  background-color: $blue;
+  padding: 30px;
+  font-size: 30px;
+  text-align: center;
+  color: $white;
+  .frame {
+    border: 3px solid $white;
+    border-right: 0;
+    &:last-child {
+      border-right: 3px solid $white;
+    }
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    .balls {
+      background-color: $white;
+      color: $blue;
+      .ball {
+        display: inline-block;
+        text-align: center;
+        width: 50%;
+      }
+    }
+  }
+}

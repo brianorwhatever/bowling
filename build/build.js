@@ -20291,23 +20291,38 @@ var Scoreboard = function (_Component) {
 
       console.log(store.getState().game.frames);
       return _react2.default.createElement(
-        'table',
-        null,
-        _react2.default.createElement(
-          'tbody',
-          null,
-          _react2.default.createElement(
-            'tr',
-            null,
-            store.getState().game.frames.map(function (frame, key) {
-              return _react2.default.createElement(
-                'td',
-                { key: key },
-                frame.score
-              );
-            })
-          )
-        )
+        'div',
+        { className: 'score-container' },
+        store.getState().game.frames.map(function (frame, key) {
+          var ball1 = typeof frame.balls[0] === 'undefined' ? '' : frame.balls[0];
+          ball1 = ball1 === 0 ? '-' : ball1;
+          var ball2 = typeof frame.balls[1] === 'undefined' ? '' : frame.balls[1];
+          ball2 = ball2 === 0 ? '-' : ball2;
+
+          return _react2.default.createElement(
+            'div',
+            { className: 'frame', key: key },
+            _react2.default.createElement(
+              'div',
+              { className: 'balls' },
+              _react2.default.createElement(
+                'div',
+                { className: 'ball ball1' },
+                ball1
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'ball ball2' },
+                ball2
+              )
+            ),
+            _react2.default.createElement(
+              'span',
+              { className: 'frame-score' },
+              frame.score
+            )
+          );
+        })
       );
     }
   }]);
@@ -20433,9 +20448,10 @@ var initialState = {
   currentFrame: {
     pinsLeft: 10,
     ballsBowled: 0,
-    number: 1
+    number: 1,
+    balls: []
   },
-  frames: Array(10).fill({ score: 0 }),
+  frames: Array(10).fill({ score: 0, balls: [] }),
   balls: []
 };
 
@@ -20450,7 +20466,8 @@ function game() {
         currentFrame: {
           number: state.currentFrame.number,
           pinsLeft: state.currentFrame.pinsLeft - action.value,
-          ballsBowled: state.currentFrame.ballsBowled + 1
+          ballsBowled: state.currentFrame.ballsBowled + 1,
+          balls: [].concat(_toConsumableArray(state.currentFrame.balls), [action.value])
         },
         frames: state.frames,
         balls: [].concat(_toConsumableArray(state.balls), [action.value])
@@ -20461,7 +20478,8 @@ function game() {
         newState.currentFrame = {
           pinsLeft: 10,
           ballsBowled: 0,
-          number: newState.currentFrame.number + 1
+          number: newState.currentFrame.number + 1,
+          balls: []
         };
       }
       return newState;

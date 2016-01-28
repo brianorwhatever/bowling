@@ -13,6 +13,7 @@ var watchify = require('watchify'); // Watchify for source changes
 var merge = require('utils-merge'); // Object merge tool
 var duration = require('gulp-duration'); // Time aspects of your gulp process
 var connect = require('gulp-connect');
+var sass = require('gulp-sass');
 
 // Configuration for Gulp
 var config = {
@@ -20,8 +21,12 @@ var config = {
     src: './src/index.js',
     watch: './src/**/*',
     outputDir: './build/',
-    outputFile: 'build.js',
+    outputFile: 'build.js'
   },
+  css: {
+    src: './src/styles/**/*.scss',
+    outputDir: './build/styles'
+  }
 };
 
 // Error reporting function
@@ -31,7 +36,7 @@ function mapError(err) {
     gutil.log(chalk.red(err.name)
       + ': ' + chalk.yellow(err.fileName.replace(__dirname + '/src/js/', ''))
       + ': ' + 'Line ' + chalk.magenta(err.lineNumber)
-      + ' & ' + 'Column ' + chalk.magenta(err.columnNumber || err.column)
+      + ' & ' + 'Column ' + sychalk.magenta(err.columnNumber || err.column)
       + ': ' + chalk.blue(err.description));
   } else {
     // Browserify error..
@@ -71,6 +76,7 @@ gulp.task('copy', function () {
 
 // Gulp task for build
 gulp.task('build', function() {
+
   // livereload.listen(4000); // Start livereload server
   var args = merge(watchify.args, { debug: true }); // Merge in default watchify args with browserify arguments
   var bundler = browserify(config.js.src, args) // Browserify
@@ -88,4 +94,13 @@ gulp.task('build', function() {
 
 });
 
-gulp.task('default', ['copy', 'build']);
+gulp.task('sass', function() {
+  gulp.watch(config.css.src, function(){
+    gulp.src(config.css.src)
+      .pipe(sass.sync().on('error', sass.logError))
+      .pipe(gulp.dest(config.css.outputDir))
+      .pipe(connect.reload());
+  });
+})
+
+gulp.task('default', ['copy', 'build', 'sass']);

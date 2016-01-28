@@ -3,9 +3,10 @@ const initialState = {
   currentFrame: {
     pinsLeft: 10,
     ballsBowled: 0,
-    number: 1
+    number: 1,
+    balls: []
   },
-  frames: Array(10).fill({score: 0}),
+  frames: Array(10).fill({score: 0, balls: []}),
   balls: []
 }
 
@@ -17,7 +18,8 @@ export default function game(state = initialState, action) {
         currentFrame: {
           number: state.currentFrame.number,
           pinsLeft: state.currentFrame.pinsLeft - action.value,
-          ballsBowled: state.currentFrame.ballsBowled +1
+          ballsBowled: state.currentFrame.ballsBowled +1,
+          balls: [...state.currentFrame.balls, action.value]
         },
         frames: state.frames,
         balls: [...state.balls, action.value]
@@ -28,7 +30,8 @@ export default function game(state = initialState, action) {
         newState.currentFrame = {
           pinsLeft: 10,
           ballsBowled: 0,
-          number: newState.currentFrame.number +1
+          number: newState.currentFrame.number + 1,
+          balls: []
         }
       }
       return newState;
