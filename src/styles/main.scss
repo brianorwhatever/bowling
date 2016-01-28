@@ -8,6 +8,7 @@ body {
 
 $blue: rgba(78, 110, 255, 1);
 $white: rgba(255,255,255,1);
+$boxSize: 70px;
 
 .score-container {
   background-color: $blue;
@@ -22,15 +23,18 @@ $white: rgba(255,255,255,1);
       border-right: 3px solid $white;
     }
     display: inline-block;
-    width: 60px;
-    height: 60px;
+    width: $boxSize;
+    height: $boxSize;
     .balls {
-      background-color: $white;
-      color: $blue;
       .ball {
         display: inline-block;
         text-align: center;
         width: 50%;
+      }
+      .ball2 {
+        background-color: $white;
+        color: $blue;
+        height: $boxSize/2;
       }
     }
   }

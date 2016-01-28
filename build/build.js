@@ -20289,15 +20289,18 @@ var Scoreboard = function (_Component) {
     value: function render() {
       var store = this.context.store;
 
-      console.log(store.getState().game.frames);
+      var game = store.getState().game;
+
       return _react2.default.createElement(
         'div',
         { className: 'score-container' },
         store.getState().game.frames.map(function (frame, key) {
-          var ball1 = typeof frame.balls[0] === 'undefined' ? '' : frame.balls[0];
+          var ball1 = typeof frame.ballsIndexes[0] === 'undefined' ? '' : game.balls[frame.ballsIndexes[0]];
           ball1 = ball1 === 0 ? '-' : ball1;
-          var ball2 = typeof frame.balls[1] === 'undefined' ? '' : frame.balls[1];
+          ball1 = ball1 === 10 ? 'X' : ball1;
+          var ball2 = typeof frame.ballsIndexes[0] === 'undefined' ? '' : game.balls[frame.ballsIndexes[1]];
           ball2 = ball2 === 0 ? '-' : ball2;
+          ball2 = ball1 + ball2 === 10 ? '/' : ball2;
 
           return _react2.default.createElement(
             'div',
@@ -20449,11 +20452,14 @@ var initialState = {
     pinsLeft: 10,
     ballsBowled: 0,
     number: 1,
-    balls: []
+    ballsIndexes: [],
+    score: 0
   },
-  frames: Array(10).fill({ score: 0, balls: [] }),
+  frames: Array(10).fill({ score: '', ballsIndexes: [] }),
   balls: []
 };
+
+function calculateFrameScore(game) {}
 
 function game() {
   var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
@@ -20461,27 +20467,55 @@ function game() {
 
   switch (action.type) {
     case 'ADD_BALL':
+      if (state.currentFrame.number == 11) return;
       var newState = {
         score: state.score,
         currentFrame: {
           number: state.currentFrame.number,
           pinsLeft: state.currentFrame.pinsLeft - action.value,
           ballsBowled: state.currentFrame.ballsBowled + 1,
-          balls: [].concat(_toConsumableArray(state.currentFrame.balls), [action.value])
+          ballsIndexes: [].concat(_toConsumableArray(state.currentFrame.ballsIndexes), [state.balls.length])
         },
         frames: state.frames,
         balls: [].concat(_toConsumableArray(state.balls), [action.value])
       };
+
       if (newState.currentFrame.pinsLeft === 0 || newState.currentFrame.ballsBowled == 2) {
-        newState.currentFrame.score = 10 - newState.currentFrame.pinsLeft;
+        newState.currentFrame.score = newState.score;
         newState.frames[newState.currentFrame.number - 1] = newState.currentFrame;
         newState.currentFrame = {
           pinsLeft: 10,
           ballsBowled: 0,
           number: newState.currentFrame.number + 1,
-          balls: []
+          ballsIndexes: []
         };
       }
+
+      newState.frames.forEach(function (frame, index) {
+        if (frame.ballsIndexes.length === 0) return;
+        var previousScore = index === 0 ? 0 : newState.frames[index - 1].score;
+
+        var ball1 = newState.balls[frame.ballsIndexes[0]];
+        var ball2 = typeof frame.ballsIndexes[1] === 'undefined' ? 0 : newState.balls[frame.ballsIndexes[1]];
+        frame.score = previousScore + ball1 + ball2;
+
+        /* Strike bonus */
+        if (ball1 === 10) {
+          frame.score += typeof newState.balls[frame.ballsIndexes[0] + 1] === 'undefined' ? 0 : newState.balls[frame.ballsIndexes[0] + 1];
+          frame.score += typeof newState.balls[frame.ballsIndexes[0] + 2] === 'undefined' ? 0 : newState.balls[frame.ballsIndexes[0] + 2];
+        }
+        /* Spare bonus */
+        if (ball1 + ball2 === 10) {
+          frame.score += typeof newState.balls[frame.ballsIndexes[0] + 1] === 'undefined' ? 0 : newState.balls[frame.ballsIndexes[0] + 1];
+        }
+        // frame.score = newState.scoreframe.ballsIndexes
+        // if(newState.balls[frame.ballsIndexes[0]] === 10)
+        //   frame.score +=
+        // if(newState.balls[frame.])
+        // frame.score = ;
+        // console.log(index);
+      });
+
       return newState;
     default:
       return state;

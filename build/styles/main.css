@@ -56,14 +56,15 @@ table {
     border: 3px solid white;
     border-right: 0;
     display: inline-block;
-    width: 60px;
-    height: 60px; }
+    width: 70px;
+    height: 70px; }
     .score-container .frame:last-child {
       border-right: 3px solid white; }
-    .score-container .frame .balls {
+    .score-container .frame .balls .ball {
+      display: inline-block;
+      text-align: center;
+      width: 50%; }
+    .score-container .frame .balls .ball2 {
       background-color: white;
-      color: #4e6eff; }
-      .score-container .frame .balls .ball {
-        display: inline-block;
-        text-align: center;
-        width: 50%; }
+      color: #4e6eff;
+      height: 35px; }
