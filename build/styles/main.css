@@ -47,6 +47,9 @@ table {
   border-spacing: 0; }
 
 /* Main styles */
+body, h1 {
+  font-family: 'VT323'; }
+
 .title {
   text-align: center;
   background-color: #4e6eff; }
@@ -54,7 +57,26 @@ table {
     padding: 20px;
     font-size: 60px;
     color: white;
-    font-family: 'VT323'; }
+    font-family: 'VT323';
+    appearance: none;
+    box-shadow: none; }
+
+.bowl-button-container {
+  text-align: center;
+  background-color: #4e6eff;
+  padding: 30px; }
+  .bowl-button-container .bowl-button {
+    height: 100px;
+    width: 300px;
+    font-size: 60px;
+    color: white;
+    font-family: 'VT323';
+    background-color: #4e6eff;
+    border-color: white;
+    border-width: 8px; }
+    .bowl-button-container .bowl-button:hover {
+      background-color: #919191;
+      cursor: pointer; }
 
 .score-container {
   background-color: #4e6eff;

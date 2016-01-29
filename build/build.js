@@ -20222,9 +20222,13 @@ var BowlButton = function (_Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'button',
-        { onClick: this.bowl.bind(this) },
-        'Bowl!'
+        'div',
+        { className: 'bowl-button-container' },
+        _react2.default.createElement(
+          'button',
+          { className: 'bowl-button', onClick: this.bowl.bind(this) },
+          'Bowl!'
+        )
       );
     }
   }]);

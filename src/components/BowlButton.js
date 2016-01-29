@@ -9,7 +9,9 @@ class BowlButton extends Component {
 
   render() {
     return (
-      <button onClick={this.bowl.bind(this)}>Bowl!</button>
+      <div className="bowl-button-container">
+        <button className="bowl-button" onClick={this.bowl.bind(this)}>Bowl!</button>
+      </div>
     )
   }
 }
