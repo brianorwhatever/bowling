@@ -1,14 +1,13 @@
 @import 'reset';
 
 /* Main styles */
-
 body {
   
 }
 
 $blue: rgba(78, 110, 255, 1);
 $white: rgba(255,255,255,1);
-$boxSize: 70px;
+$boxSize: 35px;
 
 .score-container {
   background-color: $blue;
@@ -19,22 +18,26 @@ $boxSize: 70px;
   .frame {
     border: 3px solid $white;
     border-right: 0;
+    display: inline-block;
+    width: $boxSize * 2;
+    height: $boxSize * 2;
     &:last-child {
       border-right: 3px solid $white;
+      width: $boxSize * 3;
     }
-    display: inline-block;
-    width: $boxSize;
-    height: $boxSize;
+    
     .balls {
+      height: $boxSize;
       .ball {
         display: inline-block;
         text-align: center;
-        width: 50%;
+        width: $boxSize;
+        height: $boxSize;
       }
-      .ball2 {
+      .ball2,.ball3 {
         background-color: $white;
         color: $blue;
-        height: $boxSize/2;
+        height: $boxSize;
       }
     }
   }

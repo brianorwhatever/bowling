@@ -20298,9 +20298,10 @@ var Scoreboard = function (_Component) {
           var ball1 = typeof frame.ballsIndexes[0] === 'undefined' ? '' : game.balls[frame.ballsIndexes[0]];
           ball1 = ball1 === 0 ? '-' : ball1;
           ball1 = ball1 === 10 ? 'X' : ball1;
-          var ball2 = typeof frame.ballsIndexes[0] === 'undefined' ? '' : game.balls[frame.ballsIndexes[1]];
+          var ball2 = typeof frame.ballsIndexes[1] === 'undefined' ? '' : game.balls[frame.ballsIndexes[1]];
           ball2 = ball2 === 0 ? '-' : ball2;
           ball2 = ball1 + ball2 === 10 ? '/' : ball2;
+          var ball3 = typeof frame.ballsIndexes[2] === 'undefined' ? '' : game.balls[frame.ballsIndexes[2]];
 
           return _react2.default.createElement(
             'div',
@@ -20317,7 +20318,12 @@ var Scoreboard = function (_Component) {
                 'div',
                 { className: 'ball ball2' },
                 ball2
-              )
+              ),
+              key === 9 ? _react2.default.createElement(
+                'div',
+                { className: 'ball ball3' },
+                ball3
+              ) : ''
             ),
             _react2.default.createElement(
               'span',
@@ -20467,7 +20473,7 @@ function game() {
 
   switch (action.type) {
     case 'ADD_BALL':
-      if (state.currentFrame.number == 11) return;
+      if (state.currentFrame.number == 11) return state;
       var newState = {
         score: state.score,
         currentFrame: {
@@ -20480,9 +20486,33 @@ function game() {
         balls: [].concat(_toConsumableArray(state.balls), [action.value])
       };
 
-      if (newState.currentFrame.pinsLeft === 0 || newState.currentFrame.ballsBowled == 2) {
-        newState.currentFrame.score = newState.score;
-        newState.frames[newState.currentFrame.number - 1] = newState.currentFrame;
+      newState.frames[newState.currentFrame.number - 1] = newState.currentFrame;
+
+      if (newState.currentFrame.number === 10) {
+        if (newState.currentFrame.ballsBowled === 1) {
+          if (newState.currentFrame.pinsLeft === 0) {
+            newState.currentFrame.pinsLeft = 10;
+          }
+        } else if (newState.currentFrame.ballsBowled === 2) {
+          if (newState.balls[newState.currentFrame.ballsIndexes[0]] + newState.balls[newState.currentFrame.ballsIndexes[1]] >= 10) {
+            newState.currentFrame.pinsLeft = 10;
+          } else {
+            newState.currentFrame = {
+              pinsLeft: 10,
+              ballsBowled: 0,
+              number: newState.currentFrame.number + 1,
+              ballsIndexes: []
+            };
+          }
+        } else {
+          newState.currentFrame = {
+            pinsLeft: 10,
+            ballsBowled: 0,
+            number: newState.currentFrame.number + 1,
+            ballsIndexes: []
+          };
+        }
+      } else if (newState.currentFrame.pinsLeft === 0 || newState.currentFrame.ballsBowled === 2) {
         newState.currentFrame = {
           pinsLeft: 10,
           ballsBowled: 0,
@@ -20497,7 +20527,8 @@ function game() {
 
         var ball1 = newState.balls[frame.ballsIndexes[0]];
         var ball2 = typeof frame.ballsIndexes[1] === 'undefined' ? 0 : newState.balls[frame.ballsIndexes[1]];
-        frame.score = previousScore + ball1 + ball2;
+        var ball3 = typeof frame.ballsIndexes[2] === 'undefined' ? 0 : newState.balls[frame.ballsIndexes[2]];
+        frame.score = previousScore + ball1 + ball2 + ball3;
 
         /* Strike bonus */
         if (ball1 === 10) {
@@ -20508,14 +20539,8 @@ function game() {
         if (ball1 + ball2 === 10) {
           frame.score += typeof newState.balls[frame.ballsIndexes[0] + 1] === 'undefined' ? 0 : newState.balls[frame.ballsIndexes[0] + 1];
         }
-        // frame.score = newState.scoreframe.ballsIndexes
-        // if(newState.balls[frame.ballsIndexes[0]] === 10)
-        //   frame.score +=
-        // if(newState.balls[frame.])
-        // frame.score = ;
-        // console.log(index);
       });
-
+      console.log(newState);
       return newState;
     default:
       return state;
