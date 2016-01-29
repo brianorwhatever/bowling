@@ -27,7 +27,7 @@ export default function game(state = initialState, action) {
           ballsBowled: state.currentFrame.ballsBowled + 1,
           ballsIndexes: [...state.currentFrame.ballsIndexes, state.balls.length]
         },
-        frames: state.frames,
+        frames: [...state.frames],
         balls: [...state.balls, action.value]
       }
 
@@ -87,8 +87,9 @@ export default function game(state = initialState, action) {
           frame.score += (typeof newState.balls[frame.ballsIndexes[0]+1] === 'undefined') ? 0 : newState.balls[frame.ballsIndexes[0]+1];
         }
       });
-      console.log(newState);
       return newState;
+    case 'RESET_GAME':
+      return initialState;
     default:
       return state;
   }

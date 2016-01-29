@@ -58286,19 +58286,44 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var BowlButton = function (_Component) {
   _inherits(BowlButton, _Component);
 
-  function BowlButton() {
+  function BowlButton(props) {
     _classCallCheck(this, BowlButton);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(BowlButton).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BowlButton).call(this, props));
+
+    _this.state = { buttonText: 'Bowl!' };
+    return _this;
   }
 
   _createClass(BowlButton, [{
-    key: 'bowl',
-    value: function bowl() {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
       var store = this.context.store;
 
-      var value = Math.round(Math.random() * store.getState().game.currentFrame.pinsLeft);
-      store.dispatch({ type: 'ADD_BALL', value: value });
+      store.subscribe(this.updateButton.bind(this));
+    }
+  }, {
+    key: 'buttonPressed',
+    value: function buttonPressed() {
+      var store = this.context.store;
+
+      if (store.getState().game.currentFrame.number === 11) {
+        store.dispatch({ type: 'RESET_GAME' });
+      } else {
+        var value = Math.round(Math.random() * store.getState().game.currentFrame.pinsLeft);
+        store.dispatch({ type: 'ADD_BALL', value: value });
+      }
+    }
+  }, {
+    key: 'updateButton',
+    value: function updateButton() {
+      var store = this.context.store;
+
+      if (store.getState().game.currentFrame.number === 11) {
+        this.setState({ buttonText: 'Reset' });
+      } else {
+        this.setState({ buttonText: 'Bowl!' });
+      }
     }
   }, {
     key: 'render',
@@ -58308,8 +58333,8 @@ var BowlButton = function (_Component) {
         { className: 'bowl-button-container' },
         _react2.default.createElement(
           'button',
-          { className: 'bowl-button', onClick: this.bowl.bind(this) },
-          'Bowl!'
+          { className: 'bowl-button', onClick: this.buttonPressed.bind(this) },
+          this.state.buttonText
         )
       );
     }
@@ -58772,7 +58797,7 @@ function game() {
           ballsBowled: state.currentFrame.ballsBowled + 1,
           ballsIndexes: [].concat(_toConsumableArray(state.currentFrame.ballsIndexes), [state.balls.length])
         },
-        frames: state.frames,
+        frames: [].concat(_toConsumableArray(state.frames)),
         balls: [].concat(_toConsumableArray(state.balls), [action.value])
       };
 
@@ -58830,8 +58855,9 @@ function game() {
           frame.score += typeof newState.balls[frame.ballsIndexes[0] + 1] === 'undefined' ? 0 : newState.balls[frame.ballsIndexes[0] + 1];
         }
       });
-      console.log(newState);
       return newState;
+    case 'RESET_GAME':
+      return initialState;
     default:
       return state;
   }
