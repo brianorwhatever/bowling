@@ -84,47 +84,47 @@ table {
 
 @keyframes flicker {
   0% {
-    opacity: 0.75768; }
+    opacity: 0.18421; }
   5% {
-    opacity: 0.43612; }
+    opacity: 0.12305; }
   10% {
-    opacity: 0.67406; }
+    opacity: 0.22181; }
   15% {
-    opacity: 0.88769; }
+    opacity: 0.4986; }
   20% {
-    opacity: 0.60836; }
+    opacity: 0.58074; }
   25% {
-    opacity: 0.91098; }
+    opacity: 0.70687; }
   30% {
-    opacity: 0.78334; }
+    opacity: 0.41539; }
   35% {
-    opacity: 0.63187; }
+    opacity: 0.12284; }
   40% {
-    opacity: 0.41154; }
+    opacity: 0.90458; }
   45% {
-    opacity: 0.55451; }
+    opacity: 0.3792; }
   50% {
-    opacity: 0.78078; }
+    opacity: 0.17741; }
   55% {
-    opacity: 0.83931; }
+    opacity: 0.11471; }
   60% {
-    opacity: 0.34725; }
+    opacity: 0.81885; }
   65% {
-    opacity: 0.05236; }
+    opacity: 0.70556; }
   70% {
-    opacity: 0.76065; }
+    opacity: 0.96107; }
   75% {
-    opacity: 0.89779; }
+    opacity: 0.76498; }
   80% {
-    opacity: 0.60895; }
+    opacity: 0.71565; }
   85% {
-    opacity: 0.69025; }
+    opacity: 0.19185; }
   90% {
-    opacity: 0.5157; }
+    opacity: 0.05703; }
   95% {
-    opacity: 0.13656; }
+    opacity: 0.06885; }
   100% {
-    opacity: 0.95845; } }
+    opacity: 0.9891; } }
 
 .monitor {
   background: #4e6eff;
@@ -133,8 +133,7 @@ table {
   margin-top: 10px;
   position: relative;
   overflow: hidden;
-  border: 2px solid #666;
-  align-self: flex-end; }
+  border: 2px solid #666; }
   .monitor::after {
     content: " ";
     display: block;
@@ -244,8 +243,7 @@ table {
 
 .threed-wrapper {
   width: 500px;
-  height: 500px;
-  background-color: red; }
+  height: 500px; }
 
 /* Main styles */
 body, h1 {
@@ -253,7 +251,6 @@ body, h1 {
   height: 100%; }
 
 .app-wrapper {
-  background-image: url("../images/bowling-alley.jpg");
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
   height: 100vh;

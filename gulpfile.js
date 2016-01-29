@@ -82,7 +82,7 @@ gulp.task('copyImages', function () {
 
 /* copy 3d file to dest */
 gulp.task('copy3d', function () {
-  return gulp.src('./3d-model/BowlingAlley.json')
+  return gulp.src('./3d-model/**/*.json')
    .pipe(gulp.dest('./build/3d'));
 });
 

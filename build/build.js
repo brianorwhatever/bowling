@@ -58532,45 +58532,54 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ThreeDTitle = function (_Component) {
   _inherits(ThreeDTitle, _Component);
 
-  function ThreeDTitle() {
+  function ThreeDTitle(props) {
     _classCallCheck(this, ThreeDTitle);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(ThreeDTitle).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ThreeDTitle).call(this, props));
+
+    _this.loadMesh = _this.loadMesh.bind(_this);
+    _this.state = { geometry: new _three2.default.Geometry(), material: new _three2.default.MeshBasicMaterial() };
+    return _this;
   }
 
   _createClass(ThreeDTitle, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      var self = this;
-      var model = this.refs.model;
       var loader = new _three2.default.JSONLoader();
-      // debugger;
-      loader.load('./3d/BowlingAlley.json', function (geometry) {
-        // mesh = geometry;
-        // debugger;
-      });
+      loader.load('./3d/BowlingPin.json', this.loadMesh);
+    }
+  }, {
+    key: 'loadMesh',
+    value: function loadMesh(geometry, materials) {
+
+      this.setState({ geometry: geometry, material: new _three2.default.MeshFaceMaterial(materials) });
+      this.forceUpdate();
     }
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
 
       var aspectratio = this.props.width / this.props.height;
 
       var cameraprops = { fov: 75, aspect: aspectratio,
         near: 1, far: 5000,
-        position: new _three2.default.Vector3(0, 0, 600),
+        position: new _three2.default.Vector3(10, 7, 0),
         lookat: new _three2.default.Vector3(0, 0, 0) };
 
-      var meshPosition = new _three2.default.Vector3(0, 0, 0);
-      var meshMaterial = new _three2.default.MeshBasicMaterial();
+      var meshPositions = [new _three2.default.Vector3(0, 0, 0), new _three2.default.Vector3(-3, 0, 1), new _three2.default.Vector3(-3, 0, -1), new _three2.default.Vector3(-6, 0, 2), new _three2.default.Vector3(-6, 0, 0), new _three2.default.Vector3(-6, 0, -2), new _three2.default.Vector3(-9, 0, -3), new _three2.default.Vector3(-9, 0, -1), new _three2.default.Vector3(-9, 0, 1), new _three2.default.Vector3(-9, 0, 3)];
 
       return _react2.default.createElement(
         'div',
         { className: 'threed-wrapper' },
         _react2.default.createElement(
           _reactThree.Scene,
-          { width: this.props.width, height: this.props.height, ref: 'model', camera: 'maincamera' },
-          _react2.default.createElement(_reactThree.PerspectiveCamera, _extends({ name: 'maincamera' }, cameraprops))
+          { transparent: true, width: this.props.width, height: this.props.height, ref: 'model', camera: 'maincamera' },
+          _react2.default.createElement(_reactThree.HemisphereLight, { skyColor: 0xffffff }),
+          _react2.default.createElement(_reactThree.PerspectiveCamera, _extends({ name: 'maincamera' }, cameraprops)),
+          meshPositions.map(function (position, index) {
+            return _react2.default.createElement(_reactThree.Mesh, { position: position, key: index, geometry: _this2.state.geometry, material: _this2.state.material });
+          })
         )
       );
     }
