@@ -58538,7 +58538,7 @@ var ThreeDTitle = function (_Component) {
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ThreeDTitle).call(this, props));
 
     _this.loadMesh = _this.loadMesh.bind(_this);
-    _this.state = { geometry: new _three2.default.Geometry() };
+    _this.state = { geometry: new _three2.default.Geometry(), material: new _three2.default.MeshBasicMaterial() };
     return _this;
   }
 
@@ -58546,12 +58546,13 @@ var ThreeDTitle = function (_Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       var loader = new _three2.default.JSONLoader();
-      loader.load('./3d/BowlingAlley.json', this.loadMesh);
+      loader.load('./3d/BowlingPin.json', this.loadMesh);
     }
   }, {
     key: 'loadMesh',
-    value: function loadMesh(geometry) {
-      this.setState({ geometry: geometry });
+    value: function loadMesh(geometry, materials) {
+
+      this.setState({ geometry: geometry, material: new _three2.default.MeshFaceMaterial(materials) });
       this.forceUpdate();
     }
   }, {
@@ -58561,20 +58562,26 @@ var ThreeDTitle = function (_Component) {
 
       var cameraprops = { fov: 75, aspect: aspectratio,
         near: 1, far: 5000,
-        position: new _three2.default.Vector3(0, 0, 600),
+        position: new _three2.default.Vector3(10, 10, 0),
         lookat: new _three2.default.Vector3(0, 0, 0) };
 
       var meshPosition = new _three2.default.Vector3(0, 0, 0);
-      var meshMaterial = new _three2.default.MeshBasicMaterial();
+
+      // hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
+      //     hemiLight.color.setHSL( 0.6, 1, 0.6 );
+      //     hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
+      //     hemiLight.position.set( 0, 500, 0 );
+      //     scene.add( hemiLight );
 
       return _react2.default.createElement(
         'div',
         { className: 'threed-wrapper' },
         _react2.default.createElement(
           _reactThree.Scene,
-          { width: this.props.width, height: this.props.height, ref: 'model', camera: 'maincamera' },
+          { transparent: true, width: this.props.width, height: this.props.height, ref: 'model', camera: 'maincamera' },
+          _react2.default.createElement(_reactThree.HemisphereLight, { skyColor: 0xffffff }),
           _react2.default.createElement(_reactThree.PerspectiveCamera, _extends({ name: 'maincamera' }, cameraprops)),
-          _react2.default.createElement(_reactThree.Mesh, { position: meshPosition, geometry: this.state.geometry, material: meshMaterial })
+          _react2.default.createElement(_reactThree.Mesh, { position: meshPosition, geometry: this.state.geometry, material: this.state.material })
         )
       );
     }
