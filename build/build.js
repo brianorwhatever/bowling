@@ -20255,6 +20255,73 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRedux = require('react-redux');
+
+var _Title = require('../components/Title');
+
+var _Title2 = _interopRequireDefault(_Title);
+
+var _BowlButton = require('../components/BowlButton');
+
+var _BowlButton2 = _interopRequireDefault(_BowlButton);
+
+var _Scoreboard = require('../components/Scoreboard');
+
+var _Scoreboard2 = _interopRequireDefault(_Scoreboard);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Monitor = function (_Component) {
+  _inherits(Monitor, _Component);
+
+  function Monitor() {
+    _classCallCheck(this, Monitor);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(Monitor).apply(this, arguments));
+  }
+
+  _createClass(Monitor, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'monitor' },
+        _react2.default.createElement(_Title2.default, null),
+        _react2.default.createElement(_Scoreboard2.default, null),
+        _react2.default.createElement(_BowlButton2.default, null),
+        _react2.default.createElement(
+          'div',
+          { className: 'overlay' },
+          'AV-1'
+        )
+      );
+    }
+  }]);
+
+  return Monitor;
+}(_react.Component);
+
+exports.default = Monitor;
+
+},{"../components/BowlButton":177,"../components/Scoreboard":179,"../components/Title":180,"react":167,"react-redux":5}],179:[function(require,module,exports){
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20349,7 +20416,7 @@ Scoreboard.contextTypes = {
 
 exports.default = Scoreboard;
 
-},{"react":167}],179:[function(require,module,exports){
+},{"react":167}],180:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -20399,7 +20466,7 @@ var Title = function (_Component) {
 
 exports.default = Title;
 
-},{"react":167}],180:[function(require,module,exports){
+},{"react":167}],181:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -20414,17 +20481,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
-var _Scoreboard = require('../components/Scoreboard');
+var _Monitor = require('../components/Monitor');
 
-var _Scoreboard2 = _interopRequireDefault(_Scoreboard);
-
-var _BowlButton = require('../components/BowlButton');
-
-var _BowlButton2 = _interopRequireDefault(_BowlButton);
-
-var _Title = require('../components/Title');
-
-var _Title2 = _interopRequireDefault(_Title);
+var _Monitor2 = _interopRequireDefault(_Monitor);
 
 var _configureStore = require('../store/configureStore');
 
@@ -20455,9 +20514,7 @@ var App = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: 'app-wrapper' },
-        _react2.default.createElement(_Title2.default, null),
-        _react2.default.createElement(_Scoreboard2.default, null),
-        _react2.default.createElement(_BowlButton2.default, null)
+        _react2.default.createElement(_Monitor2.default, null)
       );
     }
   }]);
@@ -20467,7 +20524,7 @@ var App = function (_Component) {
 
 exports.default = App;
 
-},{"../components/BowlButton":177,"../components/Scoreboard":178,"../components/Title":179,"../store/configureStore":184,"react":167,"react-redux":5}],181:[function(require,module,exports){
+},{"../components/Monitor":178,"../store/configureStore":185,"react":167,"react-redux":5}],182:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -20496,7 +20553,7 @@ var store = (0, _configureStore2.default)();
   _react2.default.createElement(_App2.default, null)
 ), document.getElementById('root'));
 
-},{"./containers/App":180,"./store/configureStore":184,"react":167,"react-dom":2,"react-redux":5}],182:[function(require,module,exports){
+},{"./containers/App":181,"./store/configureStore":185,"react":167,"react-dom":2,"react-redux":5}],183:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20601,7 +20658,7 @@ function game() {
   }
 }
 
-},{}],183:[function(require,module,exports){
+},{}],184:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20622,7 +20679,7 @@ var rootReducer = (0, _redux.combineReducers)({
 
 exports.default = rootReducer;
 
-},{"./game":182,"redux":173}],184:[function(require,module,exports){
+},{"./game":183,"redux":173}],185:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20644,7 +20701,7 @@ function configureStore(initialState) {
   return store;
 }
 
-},{"../reducers":183,"redux":173}]},{},[181])
+},{"../reducers":184,"redux":173}]},{},[182])
 
 
 //# sourceMappingURL=map/build.js.map

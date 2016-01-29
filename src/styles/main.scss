@@ -1,10 +1,10 @@
 @import 'reset';
 @import url(https://fonts.googleapis.com/css?family=VT323);
+@import 'colors';
+@import 'monitor';
 
 /* Main styles */
 
-$blue: rgba(78, 110, 255, 1);
-$white: rgba(255,255,255,1);
 $boxSize: 35px;
 
 body, h1 {
@@ -18,6 +18,9 @@ body, h1 {
   background-repeat: no-repeat;
   height: 100vh;
   width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {
