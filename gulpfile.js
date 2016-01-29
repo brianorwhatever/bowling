@@ -67,11 +67,17 @@ function bundle(bundler) {
     // .pipe(livereload()); // Reload the view in the browser
 }
 
-/* global gulp */
-gulp.task('copy', function () {
+/* copy index file to dest */
+gulp.task('copyIndex', function () {
   return gulp
     .src('index.html')
     .pipe(gulp.dest('build'));
+});
+
+/* copy image to dest */
+gulp.task('copyImages', function () {
+  return gulp.src('./src/images/**/*.{jpg,png,gif}')
+   .pipe(gulp.dest('./build/images'));
 });
 
 // Gulp task for build
@@ -103,4 +109,4 @@ gulp.task('sass', function() {
   });
 })
 
-gulp.task('default', ['copy', 'build', 'sass']);
+gulp.task('default', ['copyIndex', 'copyImages', 'build', 'sass']);

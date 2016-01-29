@@ -10,7 +10,7 @@ const store = configureStore();
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="app-wrapper">
         <Title />
         <Scoreboard />
         <BowlButton />

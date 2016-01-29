@@ -20454,7 +20454,7 @@ var App = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'app-wrapper' },
         _react2.default.createElement(_Title2.default, null),
         _react2.default.createElement(_Scoreboard2.default, null),
         _react2.default.createElement(_BowlButton2.default, null)
