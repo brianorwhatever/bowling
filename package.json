@@ -13,7 +13,9 @@
     "react-dom": "~0.14.6",
     "react": "~0.14.6",
     "redux": "~3.0.6",
-    "react-redux": "~4.0.6"
+    "react-redux": "~4.0.6",
+    "three": "^0.72.0",
+    "react-three": "~0.7.5"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.1.2",

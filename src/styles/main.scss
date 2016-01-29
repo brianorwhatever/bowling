@@ -2,6 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=VT323);
 @import 'colors';
 @import 'monitor';
+@import '3dmodel';
 
 /* Main styles */
 
@@ -19,6 +20,7 @@ body, h1 {
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
