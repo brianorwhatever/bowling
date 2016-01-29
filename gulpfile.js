@@ -80,6 +80,12 @@ gulp.task('copyImages', function () {
    .pipe(gulp.dest('./build/images'));
 });
 
+/* copy 3d file to dest */
+gulp.task('copy3d', function () {
+  return gulp.src('./3d-model/BowlingAlley.json')
+   .pipe(gulp.dest('./build/3d'));
+});
+
 // Gulp task for build
 gulp.task('build', function() {
 
@@ -109,4 +115,4 @@ gulp.task('sass', function() {
   });
 })
 
-gulp.task('default', ['copyIndex', 'copyImages', 'build', 'sass']);
+gulp.task('default', ['copyIndex', 'copyImages', 'copy3d', 'build', 'sass']);

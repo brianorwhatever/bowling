@@ -84,47 +84,47 @@ table {
 
 @keyframes flicker {
   0% {
-    opacity: 0.59197; }
+    opacity: 0.65954; }
   5% {
-    opacity: 0.85922; }
+    opacity: 0.85449; }
   10% {
-    opacity: 0.39379; }
+    opacity: 0.96949; }
   15% {
-    opacity: 0.05946; }
+    opacity: 0.37808; }
   20% {
-    opacity: 0.72339; }
+    opacity: 0.75628; }
   25% {
-    opacity: 0.51029; }
+    opacity: 0.39291; }
   30% {
-    opacity: 0.79892; }
+    opacity: 0.98812; }
   35% {
-    opacity: 0.37788; }
+    opacity: 0.90351; }
   40% {
-    opacity: 0.78701; }
+    opacity: 0.53224; }
   45% {
-    opacity: 0.19972; }
+    opacity: 0.6435; }
   50% {
-    opacity: 0.24229; }
+    opacity: 0.83914; }
   55% {
-    opacity: 0.09278; }
+    opacity: 0.41041; }
   60% {
-    opacity: 0.64938; }
+    opacity: 0.69793; }
   65% {
-    opacity: 0.12509; }
+    opacity: 0.68188; }
   70% {
-    opacity: 0.28344; }
+    opacity: 0.05608; }
   75% {
-    opacity: 0.12739; }
+    opacity: 0.13154; }
   80% {
-    opacity: 0.82435; }
+    opacity: 0.89489; }
   85% {
-    opacity: 0.78074; }
+    opacity: 0.75972; }
   90% {
-    opacity: 0.20074; }
+    opacity: 0.14086; }
   95% {
-    opacity: 0.81211; }
+    opacity: 0.53253; }
   100% {
-    opacity: 0.05732; } }
+    opacity: 0.33477; } }
 
 .monitor {
   background: #4e6eff;
