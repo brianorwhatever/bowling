@@ -40,6 +40,7 @@ class ThreeDTitle extends Component {
                         new THREE.Vector3(-9,0,1),
                         new THREE.Vector3(-9,0,3)];
 
+
     return <div className="threed-wrapper">
             <Scene transparent={true} width={this.props.width} height={this.props.height} ref="model" camera="maincamera">
               <HemisphereLight skyColor={0xffffff} />
