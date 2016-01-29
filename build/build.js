@@ -58558,20 +58558,16 @@ var ThreeDTitle = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var aspectratio = this.props.width / this.props.height;
 
       var cameraprops = { fov: 75, aspect: aspectratio,
         near: 1, far: 5000,
-        position: new _three2.default.Vector3(10, 10, 0),
+        position: new _three2.default.Vector3(10, 7, 0),
         lookat: new _three2.default.Vector3(0, 0, 0) };
 
-      var meshPosition = new _three2.default.Vector3(0, 0, 0);
-
-      // hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
-      //     hemiLight.color.setHSL( 0.6, 1, 0.6 );
-      //     hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
-      //     hemiLight.position.set( 0, 500, 0 );
-      //     scene.add( hemiLight );
+      var meshPositions = [new _three2.default.Vector3(0, 0, 0), new _three2.default.Vector3(-3, 0, 1), new _three2.default.Vector3(-3, 0, -1), new _three2.default.Vector3(-6, 0, 2), new _three2.default.Vector3(-6, 0, 0), new _three2.default.Vector3(-6, 0, -2), new _three2.default.Vector3(-9, 0, -3), new _three2.default.Vector3(-9, 0, -1), new _three2.default.Vector3(-9, 0, 1), new _three2.default.Vector3(-9, 0, 3)];
 
       return _react2.default.createElement(
         'div',
@@ -58581,7 +58577,9 @@ var ThreeDTitle = function (_Component) {
           { transparent: true, width: this.props.width, height: this.props.height, ref: 'model', camera: 'maincamera' },
           _react2.default.createElement(_reactThree.HemisphereLight, { skyColor: 0xffffff }),
           _react2.default.createElement(_reactThree.PerspectiveCamera, _extends({ name: 'maincamera' }, cameraprops)),
-          _react2.default.createElement(_reactThree.Mesh, { position: meshPosition, geometry: this.state.geometry, material: this.state.material })
+          meshPositions.map(function (position, index) {
+            return _react2.default.createElement(_reactThree.Mesh, { position: position, key: index, geometry: _this2.state.geometry, material: _this2.state.material });
+          })
         )
       );
     }

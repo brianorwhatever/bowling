@@ -26,22 +26,27 @@ class ThreeDTitle extends Component {
 
     var cameraprops = {fov : 75, aspect : aspectratio, 
                        near : 1, far : 5000, 
-                       position : new THREE.Vector3(10,10,0), 
+                       position : new THREE.Vector3(10,7,0), 
                        lookat : new THREE.Vector3(0,0,0)};
 
-    var meshPosition = new THREE.Vector3(0,0,0);
-
-    // hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
-    //     hemiLight.color.setHSL( 0.6, 1, 0.6 );
-    //     hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
-    //     hemiLight.position.set( 0, 500, 0 );
-    //     scene.add( hemiLight );
+    var meshPositions = [new THREE.Vector3(0,0,0),
+                        new THREE.Vector3(-3,0,1),
+                        new THREE.Vector3(-3,0,-1),
+                        new THREE.Vector3(-6,0,2),
+                        new THREE.Vector3(-6,0,0),
+                        new THREE.Vector3(-6,0,-2),
+                        new THREE.Vector3(-9,0,-3),
+                        new THREE.Vector3(-9,0,-1),
+                        new THREE.Vector3(-9,0,1),
+                        new THREE.Vector3(-9,0,3)];
 
     return <div className="threed-wrapper">
             <Scene transparent={true} width={this.props.width} height={this.props.height} ref="model" camera="maincamera">
               <HemisphereLight skyColor={0xffffff} />
               <PerspectiveCamera name="maincamera" {...cameraprops} />
-              <Mesh position={meshPosition} geometry={this.state.geometry} material={this.state.material}/>
+              {meshPositions.map((position, index) => {
+                return <Mesh position={position} key={index} geometry={this.state.geometry} material={this.state.material}/>;
+              })}
             </Scene>
           </div>;
   }
