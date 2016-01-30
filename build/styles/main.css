@@ -84,56 +84,70 @@ table {
 
 @keyframes flicker {
   0% {
-    opacity: 0.12043; }
+    opacity: 0.58235; }
   5% {
-    opacity: 0.25433; }
+    opacity: 0.98128; }
   10% {
-    opacity: 0.31114; }
+    opacity: 0.28861; }
   15% {
-    opacity: 0.59874; }
+    opacity: 0.8908; }
   20% {
-    opacity: 0.00383; }
+    opacity: 0.79991; }
   25% {
-    opacity: 0.77317; }
+    opacity: 0.94329; }
   30% {
-    opacity: 0.98416; }
+    opacity: 0.95753; }
   35% {
-    opacity: 0.22753; }
+    opacity: 0.82228; }
   40% {
-    opacity: 0.12224; }
+    opacity: 0.03416; }
   45% {
-    opacity: 0.49999; }
+    opacity: 0.5417; }
   50% {
-    opacity: 0.24752; }
+    opacity: 0.63162; }
   55% {
-    opacity: 0.27643; }
+    opacity: 0.2007; }
   60% {
-    opacity: 0.28731; }
+    opacity: 0.60498; }
   65% {
-    opacity: 0.16908; }
+    opacity: 0.74855; }
   70% {
-    opacity: 0.90312; }
+    opacity: 0.56232; }
   75% {
-    opacity: 0.95203; }
+    opacity: 0.05341; }
   80% {
-    opacity: 0.69965; }
+    opacity: 0.28507; }
   85% {
-    opacity: 0.70592; }
+    opacity: 0.40082; }
   90% {
-    opacity: 0.49682; }
+    opacity: 0.23195; }
   95% {
-    opacity: 0.45137; }
+    opacity: 0.54943; }
   100% {
-    opacity: 0.31757; } }
+    opacity: 0.22154; } }
+
+.monitor-border {
+  padding: 5px;
+  background-color: #F0EAD6;
+  border-radius: 19px; }
+
+.monitor-wrapper {
+  padding: 30px;
+  background-color: #222;
+  border-radius: 10px; }
+
+.monitor-shadow {
+  padding: 15px 15px 10px 15px;
+  box-shadow: inset 0px 0px 20px 2px #555;
+  border-radius: 10px; }
 
 .monitor {
   background: #4e6eff;
-  width: 900px;
   height: 400px;
-  margin-top: 10px;
   position: relative;
   overflow: hidden;
-  border: 2px solid #666; }
+  border: 2px solid #666;
+  border-radius: 11px; }
   .monitor::after {
     content: " ";
     display: block;

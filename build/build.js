@@ -58398,14 +58398,26 @@ var Monitor = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'monitor' },
-        _react2.default.createElement(_Title2.default, null),
-        _react2.default.createElement(_Scoreboard2.default, null),
-        _react2.default.createElement(_BowlButton2.default, null),
+        { className: 'monitor-border' },
         _react2.default.createElement(
           'div',
-          { className: 'overlay' },
-          'AV-1'
+          { className: 'monitor-wrapper' },
+          _react2.default.createElement(
+            'div',
+            { className: 'monitor-shadow' },
+            _react2.default.createElement(
+              'div',
+              { className: 'monitor' },
+              _react2.default.createElement(_Title2.default, null),
+              _react2.default.createElement(_Scoreboard2.default, null),
+              _react2.default.createElement(_BowlButton2.default, null),
+              _react2.default.createElement(
+                'div',
+                { className: 'overlay' },
+                'AV-1'
+              )
+            )
+          )
         )
       );
     }

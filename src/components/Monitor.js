@@ -7,11 +7,17 @@ import Scoreboard from '../components/Scoreboard';
 class Monitor extends Component {
   render() {
     return (
-      <div className="monitor">
-        <Title />
-        <Scoreboard />
-        <BowlButton />
-        <div className="overlay">AV-1</div>
+      <div className="monitor-border">
+        <div className="monitor-wrapper">
+          <div className="monitor-shadow">
+            <div className="monitor">
+              <Title />
+              <Scoreboard />
+              <BowlButton />
+              <div className="overlay">AV-1</div>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

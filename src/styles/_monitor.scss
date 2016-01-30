@@ -64,14 +64,34 @@ $screen-background:#121010;
     }
   }
 }
+
+.monitor-border { 
+  padding: 5px;
+  background-color: #F0EAD6;
+  border-radius: 19px;
+}
+
+.monitor-wrapper {
+  padding: 30px;
+  background-color: #222;
+  border-radius: 10px;
+}
+
+.monitor-shadow {
+  padding: 15px 15px 10px 15px;
+  box-shadow: inset 0px 0px 20px 2px #555;
+  border-radius: 10px;
+}
+
 .monitor{
   background:$blue;
-  width:900px;
+  // width:900px;
   height:400px;
-  margin-top:10px;
+  // margin-top:10px;
   position:relative;
   overflow:hidden;
   border:2px solid #666;
+  border-radius: 11px;
 
   // flicker
   &::after{
