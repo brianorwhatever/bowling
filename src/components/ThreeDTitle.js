@@ -31,7 +31,7 @@ class ThreeDTitle extends Component {
     var aspectratio = this.props.width / this.props.height;
 
     var targetPosition = new THREE.Vector3(0,0,0);
-    var cameraPosition = new THREE.Vector3(13,1,0);
+    var cameraPosition = new THREE.Vector3(13,2,-3);
 
     var cameraprops = {fov : 75, aspect : aspectratio, 
                        near : 1, far : 5000, 

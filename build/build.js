@@ -58706,7 +58706,7 @@ var ThreeDTitle = function (_Component) {
       var aspectratio = this.props.width / this.props.height;
 
       var targetPosition = new _three2.default.Vector3(0, 0, 0);
-      var cameraPosition = new _three2.default.Vector3(13, 1, 0);
+      var cameraPosition = new _three2.default.Vector3(13, 2, -3);
 
       var cameraprops = { fov: 75, aspect: aspectratio,
         near: 1, far: 5000,
