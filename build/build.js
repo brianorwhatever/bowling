@@ -58698,12 +58698,15 @@ var ThreeDTitle = function (_Component) {
 
       var aspectratio = this.props.width / this.props.height;
 
+      var targetPosition = new _three2.default.Vector3(0, 0, 0);
+      var cameraPosition = new _three2.default.Vector3(13, 1, 0);
+
       var cameraprops = { fov: 75, aspect: aspectratio,
         near: 1, far: 5000,
-        position: new _three2.default.Vector3(10, 7, 0),
-        lookat: new _three2.default.Vector3(0, 0, 0) };
+        position: cameraPosition,
+        lookat: targetPosition };
 
-      var meshPositions = [new _three2.default.Vector3(0, 0, 0), new _three2.default.Vector3(-3, 0, 1), new _three2.default.Vector3(-3, 0, -1), new _three2.default.Vector3(-6, 0, 2), new _three2.default.Vector3(-6, 0, 0), new _three2.default.Vector3(-6, 0, -2), new _three2.default.Vector3(-9, 0, -3), new _three2.default.Vector3(-9, 0, -1), new _three2.default.Vector3(-9, 0, 1), new _three2.default.Vector3(-9, 0, 3)];
+      var meshPositions = [new _three2.default.Vector3(0, -9, 0), new _three2.default.Vector3(-3, -9, 1), new _three2.default.Vector3(-3, -9, -1), new _three2.default.Vector3(-6, -9, 2), new _three2.default.Vector3(-6, -9, 0), new _three2.default.Vector3(-6, -9, -2), new _three2.default.Vector3(-9, -9, -3), new _three2.default.Vector3(-9, -9, -1), new _three2.default.Vector3(-9, -9, 1), new _three2.default.Vector3(-9, -9, 3)];
 
       return _react2.default.createElement(
         'div',
@@ -58711,7 +58714,8 @@ var ThreeDTitle = function (_Component) {
         _react2.default.createElement(
           _reactThree.Scene,
           { transparent: true, width: this.props.width, height: this.props.height, ref: 'model', camera: 'maincamera' },
-          _react2.default.createElement(_reactThree.HemisphereLight, { skyColor: 0xffffff }),
+          _react2.default.createElement(_reactThree.DirectionalLight, { color: 0xFFFFFF, intensity: 0.5, position: cameraPosition }),
+          _react2.default.createElement(_reactThree.HemisphereLight, { skyColor: 0xFEFFF0 }),
           _react2.default.createElement(_reactThree.PerspectiveCamera, _extends({ name: 'maincamera' }, cameraprops)),
           meshPositions.map(function (position, index) {
             return _react2.default.createElement(_reactThree.Mesh, { position: position, key: index, geometry: _this2.state.geometry, material: _this2.state.material });

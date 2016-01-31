@@ -1,6 +1,6 @@
 /* found this flicker at http://codepen.io/lbebber/pen/XJRdrV/ */
 
-$buttonRed: #EE2D1B;
+$buttonRed: #C51000;
 $eggshell: #F0EAD6;
 $monitorWidth: 300px;
 $monitorheight: 200px;
@@ -12,6 +12,9 @@ $ease-in-quint:cubic-bezier(0.755, 0.050, 0.855, 0.060);
 $screen-background:$blue;
 
 /* Outer area of monitor */
+.monitor-container {
+  flex: 0;
+}
 .monitor-bottom {
   border-top: 10px solid $eggshell;
   border-left: 10px solid transparent;

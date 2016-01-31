@@ -48,6 +48,9 @@ table {
 
 /* found this flicker at http://codepen.io/lbebber/pen/XJRdrV/ */
 /* Outer area of monitor */
+.monitor-container {
+  flex: 0; }
+
 .monitor-bottom {
   border-top: 10px solid #F0EAD6;
   border-left: 10px solid transparent;
@@ -82,14 +85,14 @@ table {
 .switch-label {
   display: inline-block;
   cursor: pointer;
-  background: #EE2D1B;
+  background: #C51000;
   color: #111;
   padding: 7px;
   padding-left: 15px;
   padding-right: 15px;
   border-radius: 5px;
   margin: 10px 0;
-  box-shadow: 1px -2px #98170b; }
+  box-shadow: 1px -2px #5f0800; }
   .switch-label:active {
     box-shadow: none;
     transform: translate3d(1px, -2px, 0); }
@@ -210,51 +213,51 @@ table {
 
 @keyframes flicker {
   0% {
-    opacity: 0.88274; }
+    opacity: 0.74966; }
   5% {
-    opacity: 0.10933; }
+    opacity: 0.00171; }
   10% {
-    opacity: 0.58351; }
+    opacity: 0.41706; }
   15% {
-    opacity: 0.59024; }
+    opacity: 0.15915; }
   20% {
-    opacity: 0.10576; }
+    opacity: 0.74625; }
   25% {
-    opacity: 0.17672; }
+    opacity: 0.09592; }
   30% {
-    opacity: 0.6639; }
+    opacity: 0.20515; }
   35% {
-    opacity: 0.60624; }
+    opacity: 0.14528; }
   40% {
-    opacity: 0.64537; }
+    opacity: 0.04926; }
   45% {
-    opacity: 0.83177; }
+    opacity: 0.75056; }
   50% {
-    opacity: 0.38749; }
+    opacity: 0.38905; }
   55% {
-    opacity: 0.7507; }
+    opacity: 0.39407; }
   60% {
-    opacity: 0.21532; }
+    opacity: 0.28951; }
   65% {
-    opacity: 0.37018; }
+    opacity: 0.58684; }
   70% {
-    opacity: 0.7904; }
+    opacity: 0.42276; }
   75% {
-    opacity: 0.08487; }
+    opacity: 0.03645; }
   80% {
-    opacity: 0.56637; }
+    opacity: 0.4777; }
   85% {
-    opacity: 0.45248; }
+    opacity: 0.99065; }
   90% {
-    opacity: 0.65153; }
+    opacity: 0.83369; }
   95% {
-    opacity: 0.82689; }
+    opacity: 0.65899; }
   100% {
-    opacity: 0.93768; } }
+    opacity: 0.36404; } }
 
 .threed-wrapper {
   width: 500px;
-  height: 500px; }
+  flex: 1; }
 
 /* Main styles */
 body, h1 {
