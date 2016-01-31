@@ -58673,7 +58673,8 @@ var ThreeDTitle = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ThreeDTitle).call(this, props));
 
-    _this.loadMesh = _this.loadMesh.bind(_this);
+    _this.loadPinMesh = _this.loadPinMesh.bind(_this);
+    _this.loadBallMesh = _this.loadBallMesh.bind(_this);
     _this.state = { geometry: new _three2.default.Geometry(), material: new _three2.default.MeshBasicMaterial() };
     return _this;
   }
@@ -58682,13 +58683,19 @@ var ThreeDTitle = function (_Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       var loader = new _three2.default.JSONLoader();
-      loader.load('./3d/BowlingPin.json', this.loadMesh);
+      loader.load('./3d/BowlingPin.json', this.loadPinMesh);
+      loader.load('./3d/BowlingBall.json', this.loadBallMesh);
     }
   }, {
-    key: 'loadMesh',
-    value: function loadMesh(geometry, materials) {
-
+    key: 'loadPinMesh',
+    value: function loadPinMesh(geometry, materials) {
       this.setState({ geometry: geometry, material: new _three2.default.MeshFaceMaterial(materials) });
+      this.forceUpdate();
+    }
+  }, {
+    key: 'loadBallMesh',
+    value: function loadBallMesh(geometry, materials) {
+      this.setState({ bowlingBallGeometry: geometry, bowlingBallMaterial: new _three2.default.MeshFaceMaterial(materials) });
       this.forceUpdate();
     }
   }, {
@@ -58706,7 +58713,9 @@ var ThreeDTitle = function (_Component) {
         position: cameraPosition,
         lookat: targetPosition };
 
-      var meshPositions = [new _three2.default.Vector3(0, -9, 0), new _three2.default.Vector3(-3, -9, 1), new _three2.default.Vector3(-3, -9, -1), new _three2.default.Vector3(-6, -9, 2), new _three2.default.Vector3(-6, -9, 0), new _three2.default.Vector3(-6, -9, -2), new _three2.default.Vector3(-9, -9, -3), new _three2.default.Vector3(-9, -9, -1), new _three2.default.Vector3(-9, -9, 1), new _three2.default.Vector3(-9, -9, 3)];
+      var meshPositions = [new _three2.default.Vector3(-2, -9, 0), new _three2.default.Vector3(-5, -9, 1), new _three2.default.Vector3(-5, -9, -1), new _three2.default.Vector3(-8, -9, 2), new _three2.default.Vector3(-8, -9, 0), new _three2.default.Vector3(-8, -9, -2), new _three2.default.Vector3(-11, -9, -3), new _three2.default.Vector3(-11, -9, -1), new _three2.default.Vector3(-11, -9, 1), new _three2.default.Vector3(-11, -9, 3)];
+
+      var ballPosition = new _three2.default.Vector3(4, -6, 0);
 
       return _react2.default.createElement(
         'div',
@@ -58717,6 +58726,7 @@ var ThreeDTitle = function (_Component) {
           _react2.default.createElement(_reactThree.DirectionalLight, { color: 0xFFFFFF, intensity: 0.5, position: cameraPosition }),
           _react2.default.createElement(_reactThree.HemisphereLight, { skyColor: 0xFEFFF0 }),
           _react2.default.createElement(_reactThree.PerspectiveCamera, _extends({ name: 'maincamera' }, cameraprops)),
+          _react2.default.createElement(_reactThree.Mesh, { position: ballPosition, geometry: this.state.bowlingBallGeometry, material: this.state.bowlingBallMaterial }),
           meshPositions.map(function (position, index) {
             return _react2.default.createElement(_reactThree.Mesh, { position: position, key: index, geometry: _this2.state.geometry, material: _this2.state.material });
           })

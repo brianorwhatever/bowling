@@ -6,20 +6,26 @@ import { Mesh, PerspectiveCamera, Scene, HemisphereLight, DirectionalLight } fro
 class ThreeDTitle extends Component {
   constructor(props) {
     super(props);
-    this.loadMesh = this.loadMesh.bind(this);
+    this.loadPinMesh = this.loadPinMesh.bind(this);
+    this.loadBallMesh = this.loadBallMesh.bind(this);
     this.state = {geometry: new THREE.Geometry(), material: new THREE.MeshBasicMaterial};
   }
 
   componentDidMount() {
     const loader = new THREE.JSONLoader();
-    loader.load('./3d/BowlingPin.json', this.loadMesh);
+    loader.load('./3d/BowlingPin.json', this.loadPinMesh);
+    loader.load('./3d/BowlingBall.json', this.loadBallMesh);
   }
 
-  loadMesh(geometry, materials) {
-
+  loadPinMesh(geometry, materials) {
     this.setState({geometry, material: new THREE.MeshFaceMaterial( materials )});
     this.forceUpdate();
   }
+  loadBallMesh(geometry, materials) {
+    this.setState({bowlingBallGeometry: geometry, bowlingBallMaterial: new THREE.MeshFaceMaterial( materials )});
+    this.forceUpdate();
+  }
+
 
   render() {
     var aspectratio = this.props.width / this.props.height;
@@ -32,16 +38,18 @@ class ThreeDTitle extends Component {
                        position : cameraPosition, 
                        lookat : targetPosition};
 
-    var meshPositions = [new THREE.Vector3(0,-9,0),
-                        new THREE.Vector3(-3,-9,1),
-                        new THREE.Vector3(-3,-9,-1),
-                        new THREE.Vector3(-6,-9,2),
-                        new THREE.Vector3(-6,-9,0),
-                        new THREE.Vector3(-6,-9,-2),
-                        new THREE.Vector3(-9,-9,-3),
-                        new THREE.Vector3(-9,-9,-1),
-                        new THREE.Vector3(-9,-9,1),
-                        new THREE.Vector3(-9,-9,3)];
+    var meshPositions = [new THREE.Vector3(-2,-9,0),
+                        new THREE.Vector3(-5,-9,1),
+                        new THREE.Vector3(-5,-9,-1),
+                        new THREE.Vector3(-8,-9,2),
+                        new THREE.Vector3(-8,-9,0),
+                        new THREE.Vector3(-8,-9,-2),
+                        new THREE.Vector3(-11,-9,-3),
+                        new THREE.Vector3(-11,-9,-1),
+                        new THREE.Vector3(-11,-9,1),
+                        new THREE.Vector3(-11,-9,3)];
+
+    var ballPosition = new THREE.Vector3(4,-6,0);
 
 
     return <div className="threed-wrapper">
@@ -49,8 +57,9 @@ class ThreeDTitle extends Component {
               <DirectionalLight color={0xFFFFFF} intensity={0.5} position={cameraPosition} />
               <HemisphereLight skyColor={0xFEFFF0} />
               <PerspectiveCamera name="maincamera" {...cameraprops} />
+              <Mesh position={ballPosition} geometry={this.state.bowlingBallGeometry} material={this.state.bowlingBallMaterial} />
               {meshPositions.map((position, index) => {
-                return <Mesh position={position} key={index} geometry={this.state.geometry} material={this.state.material}/>;
+                return <Mesh position={position} key={index} geometry={this.state.geometry} material={this.state.material} />;
               })}
             </Scene>
           </div>;
