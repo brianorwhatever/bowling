@@ -84,52 +84,62 @@ table {
 
 @keyframes flicker {
   0% {
-    opacity: 0.58235; }
+    opacity: 0.08564; }
   5% {
-    opacity: 0.98128; }
+    opacity: 0.05751; }
   10% {
-    opacity: 0.28861; }
+    opacity: 0.03087; }
   15% {
-    opacity: 0.8908; }
+    opacity: 0.06451; }
   20% {
-    opacity: 0.79991; }
+    opacity: 0.55834; }
   25% {
-    opacity: 0.94329; }
+    opacity: 0.99703; }
   30% {
-    opacity: 0.95753; }
+    opacity: 0.47166; }
   35% {
-    opacity: 0.82228; }
+    opacity: 0.67887; }
   40% {
-    opacity: 0.03416; }
+    opacity: 0.94698; }
   45% {
-    opacity: 0.5417; }
+    opacity: 0.94392; }
   50% {
-    opacity: 0.63162; }
+    opacity: 0.33843; }
   55% {
-    opacity: 0.2007; }
+    opacity: 0.56279; }
   60% {
-    opacity: 0.60498; }
+    opacity: 0.15573; }
   65% {
-    opacity: 0.74855; }
+    opacity: 0.24962; }
   70% {
-    opacity: 0.56232; }
+    opacity: 0.70469; }
   75% {
-    opacity: 0.05341; }
+    opacity: 0.64624; }
   80% {
-    opacity: 0.28507; }
+    opacity: 0.44879; }
   85% {
-    opacity: 0.40082; }
+    opacity: 0.2012; }
   90% {
-    opacity: 0.23195; }
+    opacity: 0.75501; }
   95% {
-    opacity: 0.54943; }
+    opacity: 0.88261; }
   100% {
-    opacity: 0.22154; } }
+    opacity: 0.3446; } }
+
+.monitor-bottom {
+  width: 450px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #F0EAD6;
+  border-top: 70px solid transparent;
+  border-left: 30px solid #e90089; }
 
 .monitor-border {
   padding: 5px;
   background-color: #F0EAD6;
-  border-radius: 19px; }
+  border-radius: 19px;
+  border: 0.5px solid black; }
 
 .monitor-wrapper {
   padding: 30px;
@@ -143,7 +153,8 @@ table {
 
 .monitor {
   background: #4e6eff;
-  height: 400px;
+  width: 500px;
+  height: 375px;
   position: relative;
   overflow: hidden;
   border: 2px solid #666;
@@ -280,7 +291,7 @@ body, h1 {
   background-color: #4e6eff; }
   .title h1 {
     padding: 20px;
-    font-size: 60px;
+    font-size: 30px;
     color: white;
     font-family: 'VT323';
     appearance: none;
@@ -289,11 +300,11 @@ body, h1 {
 .bowl-button-container {
   text-align: center;
   background-color: #4e6eff;
-  padding: 30px; }
+  padding: 20px; }
   .bowl-button-container .bowl-button {
-    height: 100px;
-    width: 300px;
-    font-size: 60px;
+    height: 50px;
+    width: 100px;
+    font-size: 25px;
     color: white;
     font-family: 'VT323';
     background-color: #A1A1A1;
@@ -305,27 +316,27 @@ body, h1 {
 
 .score-container {
   background-color: #4e6eff;
-  padding: 30px;
-  font-size: 30px;
+  padding: 10px;
+  font-size: 15px;
   text-align: center;
   color: white; }
   .score-container .frame {
     border: 3px solid white;
     border-right: 0;
     display: inline-block;
-    width: 70px;
-    height: 70px; }
+    width: 36px;
+    height: 36px; }
     .score-container .frame:last-child {
       border-right: 3px solid white;
-      width: 105px; }
+      width: 54px; }
     .score-container .frame .balls {
-      height: 35px; }
+      height: 18px; }
       .score-container .frame .balls .ball {
         display: inline-block;
         text-align: center;
-        width: 35px;
-        height: 35px; }
+        width: 18px;
+        height: 18px; }
       .score-container .frame .balls .ball2, .score-container .frame .balls .ball3 {
         background-color: white;
         color: #4e6eff;
-        height: 35px; }
+        height: 18px; }
