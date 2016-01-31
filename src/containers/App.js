@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className="app-wrapper">
-        <ThreeDTitle width="500" height="500" />
+        <ThreeDTitle width="500" height="300" />
         <Monitor />
       </div>
     )

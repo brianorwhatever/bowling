@@ -1,5 +1,8 @@
 /* found this flicker at http://codepen.io/lbebber/pen/XJRdrV/ */
 
+$eggshell: #F0EAD6;
+$monitorWidth: 300px;
+$monitorheight: 200px;
 
 // @import "compass/css3";
 
@@ -64,21 +67,24 @@ $screen-background:#121010;
     }
   }
 }
+
 .monitor-bottom {
-  width: 450px;
-  height: 30px;
+  border-top: 10px solid $eggshell;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  height: 0;
+  width: $monitorWidth;
   margin-left: auto;
   margin-right: auto;
-  background-color: #F0EAD6;
-  border-top: 70px solid transparent;
-	border-left: 30px solid #e90089;
+  border-bottom: 1px solid $eggshell;
 }
 
 .monitor-border {
   padding: 5px;
-  background-color: #F0EAD6;
+  border: 1px solid darken($eggshell, 20%);
+  background-color: $eggshell;
   border-radius: 19px;
-  border: 0.5px solid black;
+  box-shadow: 1px -2px 10px #444;
 }
 
 .monitor-wrapper {
@@ -95,8 +101,8 @@ $screen-background:#121010;
 
 .monitor{
   background:$blue;
-  width:500px;
-  height:375px;
+  width:$monitorWidth;
+  height:$monitorheight;
   // margin-top:10px;
   position:relative;
   overflow:hidden;

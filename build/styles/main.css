@@ -84,62 +84,64 @@ table {
 
 @keyframes flicker {
   0% {
-    opacity: 0.08564; }
+    opacity: 0.38113; }
   5% {
-    opacity: 0.05751; }
+    opacity: 0.1724; }
   10% {
-    opacity: 0.03087; }
+    opacity: 0.0945; }
   15% {
-    opacity: 0.06451; }
+    opacity: 0.27696; }
   20% {
-    opacity: 0.55834; }
+    opacity: 0.86197; }
   25% {
-    opacity: 0.99703; }
+    opacity: 0.67225; }
   30% {
-    opacity: 0.47166; }
+    opacity: 0.34526; }
   35% {
-    opacity: 0.67887; }
+    opacity: 0.0315; }
   40% {
-    opacity: 0.94698; }
+    opacity: 0.0714; }
   45% {
-    opacity: 0.94392; }
+    opacity: 0.67521; }
   50% {
-    opacity: 0.33843; }
+    opacity: 0.19956; }
   55% {
-    opacity: 0.56279; }
+    opacity: 0.72345; }
   60% {
-    opacity: 0.15573; }
+    opacity: 0.19227; }
   65% {
-    opacity: 0.24962; }
+    opacity: 0.1514; }
   70% {
-    opacity: 0.70469; }
+    opacity: 0.84998; }
   75% {
-    opacity: 0.64624; }
+    opacity: 0.37001; }
   80% {
-    opacity: 0.44879; }
+    opacity: 0.46422; }
   85% {
-    opacity: 0.2012; }
+    opacity: 0.47169; }
   90% {
-    opacity: 0.75501; }
+    opacity: 0.87042; }
   95% {
-    opacity: 0.88261; }
+    opacity: 0.38974; }
   100% {
-    opacity: 0.3446; } }
+    opacity: 0.85847; } }
 
 .monitor-bottom {
-  width: 450px;
-  height: 30px;
+  border-top: 10px solid #F0EAD6;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  height: 0;
+  width: 300px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #F0EAD6;
-  border-top: 70px solid transparent;
-  border-left: 30px solid #e90089; }
+  border-bottom: 1px solid #F0EAD6; }
 
 .monitor-border {
   padding: 5px;
+  border: 1px solid #d5c48b;
   background-color: #F0EAD6;
   border-radius: 19px;
-  border: 0.5px solid black; }
+  box-shadow: 1px -2px 10px #444; }
 
 .monitor-wrapper {
   padding: 30px;
@@ -153,8 +155,8 @@ table {
 
 .monitor {
   background: #4e6eff;
-  width: 500px;
-  height: 375px;
+  width: 300px;
+  height: 200px;
   position: relative;
   overflow: hidden;
   border: 2px solid #666;
@@ -276,7 +278,7 @@ body, h1 {
   height: 100%; }
 
 .app-wrapper {
-  background-image: url("../images/bowling-alley.jpg");
+  background-image: url("../images/bowling-alley2.jpg");
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
   height: 100vh;
