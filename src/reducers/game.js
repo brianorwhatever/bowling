@@ -81,10 +81,8 @@ export default function game(state = initialState, action) {
         if(ball1 === 10) {
           frame.score += (typeof newState.balls[frame.ballsIndexes[0]+1] === 'undefined') ? 0 : newState.balls[frame.ballsIndexes[0]+1];
           frame.score += (typeof newState.balls[frame.ballsIndexes[0]+2] === 'undefined') ? 0 : newState.balls[frame.ballsIndexes[0]+2];
-        }
-        /* Spare bonus */
-        if(ball1 + ball2 === 10) {
-          frame.score += (typeof newState.balls[frame.ballsIndexes[0]+1] === 'undefined') ? 0 : newState.balls[frame.ballsIndexes[0]+1];
+        } else if(ball1 + ball2 === 10) {
+          frame.score += (typeof newState.balls[frame.ballsIndexes[1]+1] === 'undefined') ? 0 : newState.balls[frame.ballsIndexes[1]+1];
         }
       });
       return newState;

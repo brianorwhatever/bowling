@@ -58658,6 +58658,8 @@ var Scoreboard = function (_Component) {
           ball2 = ball2 === 0 ? '-' : ball2;
           ball2 = ball1 + ball2 === 10 ? '/' : ball2;
           var ball3 = typeof frame.ballsIndexes[2] === 'undefined' ? '' : game.balls[frame.ballsIndexes[2]];
+          ball3 = ball3 === 0 ? '-' : ball3;
+          ball3 = ball3 === 10 ? 'X' : ball3;
 
           return _react2.default.createElement(
             'div',
@@ -59077,10 +59079,8 @@ function game() {
         if (ball1 === 10) {
           frame.score += typeof newState.balls[frame.ballsIndexes[0] + 1] === 'undefined' ? 0 : newState.balls[frame.ballsIndexes[0] + 1];
           frame.score += typeof newState.balls[frame.ballsIndexes[0] + 2] === 'undefined' ? 0 : newState.balls[frame.ballsIndexes[0] + 2];
-        }
-        /* Spare bonus */
-        if (ball1 + ball2 === 10) {
-          frame.score += typeof newState.balls[frame.ballsIndexes[0] + 1] === 'undefined' ? 0 : newState.balls[frame.ballsIndexes[0] + 1];
+        } else if (ball1 + ball2 === 10) {
+          frame.score += typeof newState.balls[frame.ballsIndexes[1] + 1] === 'undefined' ? 0 : newState.balls[frame.ballsIndexes[1] + 1];
         }
       });
       return newState;
