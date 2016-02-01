@@ -8,7 +8,7 @@ class OrbitCamera extends Component {
   render() {
     // could use sin/cos here but a quat allows for more generic rotation
     var orbitquaternion = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0), this.props.azimuth);
-    var cameraposition = new THREE.Vector3(this.props.distance,8,15); // camera position at azimuth 0
+    var cameraposition = new THREE.Vector3(this.props.distance,6,0); // camera position at azimuth 0
     cameraposition.applyQuaternion(orbitquaternion);
     return (
       <PerspectiveCamera name="maincamera" position={cameraposition} {...this.props.cameraprops} />

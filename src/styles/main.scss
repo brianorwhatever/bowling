@@ -4,6 +4,19 @@
 @import 'monitor';
 @import '3dmodel';
 
+@font-face {
+    font-family: 'bowloramaregular';
+    src: url('../fonts/bowlor__.eot');
+    src: url('../fonts/bowlor__.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bowlor__.woff2') format('woff2'),
+         url('../fonts/bowlor__.woff') format('woff'),
+         url('../fonts/bowlor__.ttf') format('truetype'),
+         url('../fonts/bowlor__.svg#bowloramaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 /* Main styles */
 
 $boxSize: 15px;
@@ -11,6 +24,16 @@ $boxSize: 15px;
 body, h1 {
   font-family: 'VT323';
   height: 100%;
+}
+
+.extreme-3d-bowling h1 {
+  font-size: 60px;
+  color: #5254FF;
+  font-family: 'bowloramaregular';
+  text-align: center;
+  position: relative;
+  top: 60px;
+  text-shadow: 3px -3px 0 lighten(#5254FF, 20%);
 }
 
 .app-wrapper {

@@ -80,6 +80,12 @@ gulp.task('copyImages', function () {
    .pipe(gulp.dest('./build/images'));
 });
 
+/* copy fonts to dest */
+gulp.task('copyFonts', function () {
+  return gulp.src('./src/fonts/**/*')
+   .pipe(gulp.dest('./build/fonts'));
+});
+
 /* copy 3d file to dest */
 gulp.task('copy3d', function () {
   return gulp.src('./3d-model/**/*.json')
@@ -115,4 +121,4 @@ gulp.task('sass', function() {
   });
 })
 
-gulp.task('default', ['copyIndex', 'copyImages', 'copy3d', 'build', 'sass']);
+gulp.task('default', ['copyIndex', 'copyImages', 'copyFonts', 'copy3d', 'build', 'sass']);

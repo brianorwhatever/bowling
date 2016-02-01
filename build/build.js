@@ -58510,7 +58510,7 @@ var OrbitCamera = function (_Component) {
     value: function render() {
       // could use sin/cos here but a quat allows for more generic rotation
       var orbitquaternion = new _three2.default.Quaternion().setFromAxisAngle(new _three2.default.Vector3(0, 1, 0), this.props.azimuth);
-      var cameraposition = new _three2.default.Vector3(this.props.distance, 8, 15); // camera position at azimuth 0
+      var cameraposition = new _three2.default.Vector3(this.props.distance, 6, 0); // camera position at azimuth 0
       cameraposition.applyQuaternion(orbitquaternion);
       return _react2.default.createElement(_reactThree.PerspectiveCamera, _extends({ name: 'maincamera', position: cameraposition }, this.props.cameraprops));
     }
@@ -58790,7 +58790,7 @@ var ThreeDTitle = function (_Component) {
 
       var aspectratio = this.props.width / this.props.height;
 
-      var targetPosition = new _three2.default.Vector3(0, 0, 0);
+      var targetPosition = new _three2.default.Vector3(0, 1, 0);
       var lightPosition = new _three2.default.Vector3(-10, 10, -10);
 
       var cameraprops = { fov: 75, aspect: aspectratio,
@@ -58799,17 +58799,37 @@ var ThreeDTitle = function (_Component) {
 
       var meshPositions = [new _three2.default.Vector3(0, 0, 0), new _three2.default.Vector3(1.5, 0, 1.5), new _three2.default.Vector3(1.5, 0, -1.5), new _three2.default.Vector3(3, 0, -3), new _three2.default.Vector3(3, 0, 3), new _three2.default.Vector3(3, 0, 0), new _three2.default.Vector3(4.5, 0, 1.5), new _three2.default.Vector3(4.5, 0, -1.5), new _three2.default.Vector3(4.5, 0, 4.5), new _three2.default.Vector3(4.5, 0, -4.5)];
 
-      var ballPosition = new _three2.default.Vector3(4, -6, 0);
+      var ballPosition = new _three2.default.Vector3(-3, 0, 0);
 
       return _react2.default.createElement(
         'div',
         { className: 'threed-wrapper' },
+        _react2.default.createElement(
+          'div',
+          { className: 'extreme-3d-bowling' },
+          _react2.default.createElement(
+            'h1',
+            null,
+            'EXTREME'
+          ),
+          _react2.default.createElement(
+            'h1',
+            null,
+            '3D'
+          ),
+          _react2.default.createElement(
+            'h1',
+            null,
+            'BOWLING'
+          )
+        ),
         _react2.default.createElement(
           _reactThree.Scene,
           { transparent: true, width: this.props.width, height: this.props.height, ref: 'model', camera: 'maincamera' },
           _react2.default.createElement(_reactThree.DirectionalLight, { color: 0xFFFFFF, intensity: 0.5, position: lightPosition }),
           _react2.default.createElement(_reactThree.HemisphereLight, { skyColor: 0xFEFFF0 }),
           _react2.default.createElement(_OrbitCamera2.default, { cameraprops: cameraprops, distance: -10, azimuth: this.state.cameraazimuth }),
+          _react2.default.createElement(_reactThree.Mesh, { position: ballPosition, geometry: this.state.bowlingBallGeometry, material: this.state.bowlingBallMaterial }),
           meshPositions.map(function (position, index) {
             return _react2.default.createElement(_reactThree.Mesh, { position: position, key: index, geometry: _this2.state.geometry, material: _this2.state.material });
           })

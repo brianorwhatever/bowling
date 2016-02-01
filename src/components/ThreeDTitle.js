@@ -42,11 +42,10 @@ class ThreeDTitle extends Component {
     this.forceUpdate();
   }
 
-
   render() {
     var aspectratio = this.props.width / this.props.height;
 
-    var targetPosition = new THREE.Vector3(0,0,0);
+    var targetPosition = new THREE.Vector3(0,1,0);
     var lightPosition = new THREE.Vector3(-10,10,-10);
 
     var cameraprops = {fov : 75, aspect : aspectratio, 
@@ -65,14 +64,15 @@ class ThreeDTitle extends Component {
                         new THREE.Vector3(4.5,0,4.5),
                         new THREE.Vector3(4.5,0,-4.5)];
 
-    var ballPosition = new THREE.Vector3(4,-6,0);
+    var ballPosition = new THREE.Vector3(-3,0,0);
 
     return <div className="threed-wrapper">
+            <div className="extreme-3d-bowling"><h1>EXTREME</h1><h1>3D</h1><h1>BOWLING</h1></div>
             <Scene transparent={true} width={this.props.width} height={this.props.height} ref="model" camera="maincamera">
               <DirectionalLight color={0xFFFFFF} intensity={0.5} position={lightPosition} />
               <HemisphereLight skyColor={0xFEFFF0} />
               <OrbitCamera cameraprops={cameraprops} distance={-10} azimuth={this.state.cameraazimuth}/>
-              {/*<Mesh position={ballPosition} geometry={this.state.bowlingBallGeometry} material={this.state.bowlingBallMaterial} />*/}
+              <Mesh position={ballPosition} geometry={this.state.bowlingBallGeometry} material={this.state.bowlingBallMaterial} />
               {meshPositions.map((position, index) => {
                 return <Mesh position={position} key={index} geometry={this.state.geometry} material={this.state.material} />;
               })}
