@@ -31,9 +31,9 @@ body, h1 {
   h1 {
     padding: 20px;
     font-size: 30px;
+    font-weight: 300;
     color: $white;
     font-family: 'VT323';
-    appearance: none;
     box-shadow: none;
   }
 }
@@ -47,6 +47,7 @@ body, h1 {
     font-size: 25px;
     color: $white;
     font-family: 'VT323';
+    font-weight: 300;
     background-color: #A1A1A1;
     border-color: $white;
     border-width: 8px;

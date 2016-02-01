@@ -223,47 +223,47 @@ table {
 
 @keyframes flicker {
   0% {
-    opacity: 0.84316; }
+    opacity: 0.33168; }
   5% {
-    opacity: 0.44364; }
+    opacity: 0.22332; }
   10% {
-    opacity: 0.63273; }
+    opacity: 0.51111; }
   15% {
-    opacity: 0.76921; }
+    opacity: 0.74714; }
   20% {
-    opacity: 0.20022; }
+    opacity: 0.9206; }
   25% {
-    opacity: 0.02297; }
+    opacity: 0.20536; }
   30% {
-    opacity: 0.87476; }
+    opacity: 0.43824; }
   35% {
-    opacity: 0.22392; }
+    opacity: 0.35782; }
   40% {
-    opacity: 0.36585; }
+    opacity: 0.94905; }
   45% {
-    opacity: 0.17662; }
+    opacity: 0.44329; }
   50% {
-    opacity: 0.22519; }
+    opacity: 0.94657; }
   55% {
-    opacity: 0.1393; }
+    opacity: 0.65897; }
   60% {
-    opacity: 0.95232; }
+    opacity: 0.91247; }
   65% {
-    opacity: 0.97849; }
+    opacity: 0.72497; }
   70% {
-    opacity: 0.14486; }
+    opacity: 0.30236; }
   75% {
-    opacity: 0.36911; }
+    opacity: 0.95361; }
   80% {
-    opacity: 0.7614; }
+    opacity: 0.5384; }
   85% {
-    opacity: 0.85003; }
+    opacity: 0.57708; }
   90% {
-    opacity: 0.76222; }
+    opacity: 0.31573; }
   95% {
-    opacity: 0.90552; }
+    opacity: 0.96922; }
   100% {
-    opacity: 0.78384; } }
+    opacity: 0.75263; } }
 
 .threed-wrapper {
   width: 500px;
@@ -290,9 +290,9 @@ body, h1 {
   .title h1 {
     padding: 20px;
     font-size: 30px;
+    font-weight: 300;
     color: white;
     font-family: 'VT323';
-    appearance: none;
     box-shadow: none; }
 
 .bowl-button-container {
@@ -304,6 +304,7 @@ body, h1 {
     font-size: 25px;
     color: white;
     font-family: 'VT323';
+    font-weight: 300;
     background-color: #A1A1A1;
     border-color: white;
     border-width: 8px; }
