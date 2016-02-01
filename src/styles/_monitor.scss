@@ -1,7 +1,7 @@
 /* found this flicker at http://codepen.io/lbebber/pen/XJRdrV/ */
 
-$monitorWidth: 300px;
-$monitorheight: 200px;
+$monitorWidth: 360px;
+$monitorheight: 230px;
 
 // @import "compass/css3";
 
@@ -47,14 +47,18 @@ $ease-in-quint:cubic-bezier(0.755, 0.050, 0.855, 0.060);
 .switch-label{
   display:inline-block;
   cursor:pointer;
-  background:$buttonRed;
-  color:#111;
-  padding:7px;
-  padding-left:15px;
-  padding-right:15px;
+  background:transparentize($buttonRed,.3);
+  padding:7px 10px 7px 11px;
+  text-shadow:0 -1px 0 #777;
   border-radius:5px;
   margin:10px 0;
   box-shadow:1px -2px darken($buttonRed, 20%);
+  font-size: 8px;
+  color: #CCC;
+  letter-spacing: 3px;
+  font-family: Verdana, Geneva, sans-serif;
+  text-align: center;
+  font-weight: bold;
   // &::before{
   //   content:" ";
   //   display:inline-block;
@@ -132,15 +136,16 @@ $ease-in-quint:cubic-bezier(0.755, 0.050, 0.855, 0.060);
   border:none;
   border-radius: 9px;
   background-color: transparentize($screen-background,0);
+  visibility: hidden;
 }
 .monitor.off .screen{
   animation: turn-off 0.55s $ease-out-quint;
   animation-fill-mode:forwards;
-  // background-color: green;
 }
 .monitor.on .screen{
   animation: turn-on 4s linear;
   animation-fill-mode:forwards;
+  visibility: visible;
 }
 
 

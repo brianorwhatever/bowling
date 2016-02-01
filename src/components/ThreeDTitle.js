@@ -31,23 +31,23 @@ class ThreeDTitle extends Component {
     var aspectratio = this.props.width / this.props.height;
 
     var targetPosition = new THREE.Vector3(0,0,0);
-    var cameraPosition = new THREE.Vector3(13,2,-3);
+    var cameraPosition = new THREE.Vector3(-10,10,-10);
 
     var cameraprops = {fov : 75, aspect : aspectratio, 
                        near : 1, far : 5000, 
                        position : cameraPosition, 
                        lookat : targetPosition};
 
-    var meshPositions = [new THREE.Vector3(-2,-9,0),
-                        new THREE.Vector3(-5,-9,1),
-                        new THREE.Vector3(-5,-9,-1),
-                        new THREE.Vector3(-8,-9,2),
-                        new THREE.Vector3(-8,-9,0),
-                        new THREE.Vector3(-8,-9,-2),
-                        new THREE.Vector3(-11,-9,-3),
-                        new THREE.Vector3(-11,-9,-1),
-                        new THREE.Vector3(-11,-9,1),
-                        new THREE.Vector3(-11,-9,3)];
+    var meshPositions = [new THREE.Vector3(0,0,0),
+                        new THREE.Vector3(1.5,0,1.5),
+                        new THREE.Vector3(1.5,0,-1.5),
+                        new THREE.Vector3(3,0,-3),
+                        new THREE.Vector3(3,0,3),
+                        new THREE.Vector3(3,0,0),
+                        new THREE.Vector3(4.5,0,1.5),
+                        new THREE.Vector3(4.5,0,-1.5),
+                        new THREE.Vector3(4.5,0,4.5),
+                        new THREE.Vector3(4.5,0,-4.5)];
 
     var ballPosition = new THREE.Vector3(4,-6,0);
 
@@ -57,7 +57,7 @@ class ThreeDTitle extends Component {
               <DirectionalLight color={0xFFFFFF} intensity={0.5} position={cameraPosition} />
               <HemisphereLight skyColor={0xFEFFF0} />
               <PerspectiveCamera name="maincamera" {...cameraprops} />
-              <Mesh position={ballPosition} geometry={this.state.bowlingBallGeometry} material={this.state.bowlingBallMaterial} />
+              {/*<Mesh position={ballPosition} geometry={this.state.bowlingBallGeometry} material={this.state.bowlingBallMaterial} />*/}
               {meshPositions.map((position, index) => {
                 return <Mesh position={position} key={index} geometry={this.state.geometry} material={this.state.material} />;
               })}

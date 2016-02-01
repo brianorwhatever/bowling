@@ -6,7 +6,7 @@
 
 /* Main styles */
 
-$boxSize: 18px;
+$boxSize: 15px;
 
 body, h1 {
   font-family: 'VT323';
@@ -28,7 +28,6 @@ body, h1 {
 
 .title {
   text-align: center;
-  background-color: $blue;
   h1 {
     padding: 20px;
     font-size: 30px;
@@ -59,8 +58,8 @@ body, h1 {
 }
 
 .score-container {
-  padding: 10px;
-  font-size: 15px;
+  padding: 10px 0;
+  font-size: 16px;
   text-align: center;
   color: $white;
   .frame {

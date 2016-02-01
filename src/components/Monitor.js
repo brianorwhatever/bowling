@@ -28,6 +28,7 @@ class Monitor extends Component {
             <div className="monitor-shadow">
               <div className={monitorClass}>
                 <div className="screen">
+                  <Title />
                   <Scoreboard />
                   <BowlButton />
                 </div>

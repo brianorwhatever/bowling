@@ -58438,6 +58438,7 @@ var Monitor = function (_Component) {
                 _react2.default.createElement(
                   'div',
                   { className: 'screen' },
+                  _react2.default.createElement(_Title2.default, null),
                   _react2.default.createElement(_Scoreboard2.default, null),
                   _react2.default.createElement(_BowlButton2.default, null)
                 ),
@@ -58513,7 +58514,11 @@ var PowerButton = function (_Component) {
         'div',
         { className: 'power-button-container' },
         _react2.default.createElement('input', { type: 'checkbox', onChange: this.buttonClicked, id: 'switch', value: store.getState().monitor.powerOn }),
-        _react2.default.createElement('label', { htmlFor: 'switch', className: 'switch-label' })
+        _react2.default.createElement(
+          'label',
+          { htmlFor: 'switch', className: 'switch-label' },
+          'I/O'
+        )
       );
     }
   }]);
@@ -58706,14 +58711,14 @@ var ThreeDTitle = function (_Component) {
       var aspectratio = this.props.width / this.props.height;
 
       var targetPosition = new _three2.default.Vector3(0, 0, 0);
-      var cameraPosition = new _three2.default.Vector3(13, 2, -3);
+      var cameraPosition = new _three2.default.Vector3(-10, 10, -10);
 
       var cameraprops = { fov: 75, aspect: aspectratio,
         near: 1, far: 5000,
         position: cameraPosition,
         lookat: targetPosition };
 
-      var meshPositions = [new _three2.default.Vector3(-2, -9, 0), new _three2.default.Vector3(-5, -9, 1), new _three2.default.Vector3(-5, -9, -1), new _three2.default.Vector3(-8, -9, 2), new _three2.default.Vector3(-8, -9, 0), new _three2.default.Vector3(-8, -9, -2), new _three2.default.Vector3(-11, -9, -3), new _three2.default.Vector3(-11, -9, -1), new _three2.default.Vector3(-11, -9, 1), new _three2.default.Vector3(-11, -9, 3)];
+      var meshPositions = [new _three2.default.Vector3(0, 0, 0), new _three2.default.Vector3(1.5, 0, 1.5), new _three2.default.Vector3(1.5, 0, -1.5), new _three2.default.Vector3(3, 0, -3), new _three2.default.Vector3(3, 0, 3), new _three2.default.Vector3(3, 0, 0), new _three2.default.Vector3(4.5, 0, 1.5), new _three2.default.Vector3(4.5, 0, -1.5), new _three2.default.Vector3(4.5, 0, 4.5), new _three2.default.Vector3(4.5, 0, -4.5)];
 
       var ballPosition = new _three2.default.Vector3(4, -6, 0);
 
@@ -58726,7 +58731,6 @@ var ThreeDTitle = function (_Component) {
           _react2.default.createElement(_reactThree.DirectionalLight, { color: 0xFFFFFF, intensity: 0.5, position: cameraPosition }),
           _react2.default.createElement(_reactThree.HemisphereLight, { skyColor: 0xFEFFF0 }),
           _react2.default.createElement(_reactThree.PerspectiveCamera, _extends({ name: 'maincamera' }, cameraprops)),
-          _react2.default.createElement(_reactThree.Mesh, { position: ballPosition, geometry: this.state.bowlingBallGeometry, material: this.state.bowlingBallMaterial }),
           meshPositions.map(function (position, index) {
             return _react2.default.createElement(_reactThree.Mesh, { position: position, key: index, geometry: _this2.state.geometry, material: _this2.state.material });
           })
@@ -58779,7 +58783,7 @@ var Title = function (_Component) {
         _react2.default.createElement(
           "h1",
           null,
-          "Bowlings!"
+          "Bowling Simulator"
         )
       );
     }
@@ -59022,7 +59026,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = monitor;
 var initialState = {
-  powerOn: true
+  powerOn: false
 };
 
 function monitor() {
