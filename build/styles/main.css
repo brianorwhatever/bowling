@@ -223,47 +223,47 @@ table {
 
 @keyframes flicker {
   0% {
-    opacity: 0.16271; }
+    opacity: 0.98936; }
   5% {
-    opacity: 0.24451; }
+    opacity: 0.44552; }
   10% {
-    opacity: 0.83983; }
+    opacity: 0.32735; }
   15% {
-    opacity: 0.63672; }
+    opacity: 0.30248; }
   20% {
-    opacity: 0.43007; }
+    opacity: 0.44667; }
   25% {
-    opacity: 0.38277; }
+    opacity: 0.8251; }
   30% {
-    opacity: 0.46135; }
+    opacity: 0.61098; }
   35% {
-    opacity: 0.97862; }
+    opacity: 0.20002; }
   40% {
-    opacity: 0.11504; }
+    opacity: 0.66643; }
   45% {
-    opacity: 0.29953; }
+    opacity: 0.46165; }
   50% {
-    opacity: 0.70712; }
+    opacity: 0.93123; }
   55% {
-    opacity: 0.36213; }
+    opacity: 0.04917; }
   60% {
-    opacity: 0.42294; }
+    opacity: 0.27694; }
   65% {
-    opacity: 0.59616; }
+    opacity: 0.73585; }
   70% {
-    opacity: 0.08087; }
+    opacity: 0.75521; }
   75% {
-    opacity: 0.07926; }
+    opacity: 0.36159; }
   80% {
-    opacity: 0.26332; }
+    opacity: 0.8311; }
   85% {
-    opacity: 0.84712; }
+    opacity: 0.41434; }
   90% {
-    opacity: 0.58243; }
+    opacity: 0.93562; }
   95% {
-    opacity: 0.5911; }
+    opacity: 0.99059; }
   100% {
-    opacity: 0.37239; } }
+    opacity: 0.38326; } }
 
 .threed-wrapper {
   width: 500px;
@@ -277,6 +277,18 @@ table {
   font-style: normal; }
 
 /* Main styles */
+@media (max-width: 600px) {
+  #root {
+    display: none; }
+  #small-screen {
+    display: block; } }
+
+@media (min-width: 599px) {
+  #root {
+    display: block; }
+  #small-screen {
+    display: none; } }
+
 body, h1 {
   font-family: 'VT323';
   height: 100%; }

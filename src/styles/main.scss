@@ -14,10 +14,25 @@
          url('../fonts/bowlor__.svg#bowloramaregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 /* Main styles */
+@media (max-width: 600px) {
+  #root {
+    display: none;
+  }
+  #small-screen {
+    display: block;
+  }
+}
+@media (min-width: 599px) {
+  #root {
+    display: block;
+  }
+  #small-screen {
+    display: none;
+  }
+}
 
 $boxSize: 15px;
 
