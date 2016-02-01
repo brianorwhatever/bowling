@@ -58438,6 +58438,7 @@ var Monitor = function (_Component) {
                 _react2.default.createElement(
                   'div',
                   { className: 'screen' },
+                  _react2.default.createElement(_Title2.default, null),
                   _react2.default.createElement(_Scoreboard2.default, null),
                   _react2.default.createElement(_BowlButton2.default, null)
                 ),
@@ -58464,7 +58465,69 @@ Monitor.contextTypes = {
 };
 exports.default = Monitor;
 
-},{"../components/BowlButton":179,"../components/PowerButton":181,"../components/Scoreboard":182,"../components/Title":184,"react":168,"react-redux":5}],181:[function(require,module,exports){
+},{"../components/BowlButton":179,"../components/PowerButton":182,"../components/Scoreboard":183,"../components/Title":185,"react":168,"react-redux":5}],181:[function(require,module,exports){
+'use strict';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactThree = require('react-three');
+
+var _reactThree2 = _interopRequireDefault(_reactThree);
+
+var _three = require('three');
+
+var _three2 = _interopRequireDefault(_three);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var OrbitCamera = function (_Component) {
+  _inherits(OrbitCamera, _Component);
+
+  function OrbitCamera() {
+    _classCallCheck(this, OrbitCamera);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(OrbitCamera).apply(this, arguments));
+  }
+
+  _createClass(OrbitCamera, [{
+    key: 'render',
+    value: function render() {
+      // could use sin/cos here but a quat allows for more generic rotation
+      var orbitquaternion = new _three2.default.Quaternion().setFromAxisAngle(new _three2.default.Vector3(0, 1, 0), this.props.azimuth);
+      var cameraposition = new _three2.default.Vector3(this.props.distance, 8, 15); // camera position at azimuth 0
+      cameraposition.applyQuaternion(orbitquaternion);
+      return _react2.default.createElement(_reactThree.PerspectiveCamera, _extends({ name: 'maincamera', position: cameraposition }, this.props.cameraprops));
+    }
+  }]);
+
+  return OrbitCamera;
+}(_react.Component);
+
+OrbitCamera.propTypes = {
+  distance: _react2.default.PropTypes.number.isRequired,
+  azimuth: _react2.default.PropTypes.number.isRequired,
+  cameraprops: _react2.default.PropTypes.object.isRequired
+};
+
+exports.default = OrbitCamera;
+
+},{"react":168,"react-three":12,"three":178}],182:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -58513,7 +58576,11 @@ var PowerButton = function (_Component) {
         'div',
         { className: 'power-button-container' },
         _react2.default.createElement('input', { type: 'checkbox', onChange: this.buttonClicked, id: 'switch', value: store.getState().monitor.powerOn }),
-        _react2.default.createElement('label', { htmlFor: 'switch', className: 'switch-label' })
+        _react2.default.createElement(
+          'label',
+          { htmlFor: 'switch', className: 'switch-label' },
+          'I/O'
+        )
       );
     }
   }]);
@@ -58527,7 +58594,7 @@ PowerButton.contextTypes = {
 
 exports.default = PowerButton;
 
-},{"react":168}],182:[function(require,module,exports){
+},{"react":168}],183:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -58634,10 +58701,8 @@ Scoreboard.contextTypes = {
 
 exports.default = Scoreboard;
 
-},{"react":168}],183:[function(require,module,exports){
+},{"react":168}],184:[function(require,module,exports){
 'use strict';
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -58657,6 +58722,10 @@ var _three = require('three');
 
 var _three2 = _interopRequireDefault(_three);
 
+var _OrbitCamera = require('./OrbitCamera');
+
+var _OrbitCamera2 = _interopRequireDefault(_OrbitCamera);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -58675,7 +58744,7 @@ var ThreeDTitle = function (_Component) {
 
     _this.loadPinMesh = _this.loadPinMesh.bind(_this);
     _this.loadBallMesh = _this.loadBallMesh.bind(_this);
-    _this.state = { geometry: new _three2.default.Geometry(), material: new _three2.default.MeshBasicMaterial() };
+    _this.state = { geometry: new _three2.default.Geometry(), material: new _three2.default.MeshBasicMaterial(), cameraazimuth: 0 };
     return _this;
   }
 
@@ -58685,6 +58754,22 @@ var ThreeDTitle = function (_Component) {
       var loader = new _three2.default.JSONLoader();
       loader.load('./3d/BowlingPin.json', this.loadPinMesh);
       loader.load('./3d/BowlingBall.json', this.loadBallMesh);
+
+      var componentinstance = this;
+      var animationcallback = function animationcallback() /*t*/{
+        var newazimuth = componentinstance.state.cameraazimuth + 0.01;
+
+        componentinstance.setState({ cameraazimuth: newazimuth, spincameracallback: requestAnimationFrame(animationcallback) });
+      };
+      // add an interval timer function to rotate the camera
+      componentinstance.setState({ spincameracallback: requestAnimationFrame(animationcallback) });
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      if (this.state.spincameracallback !== null) {
+        cancelAnimationFrame(this.state.spincameracallback);
+      }
     }
   }, {
     key: 'loadPinMesh',
@@ -58706,14 +58791,13 @@ var ThreeDTitle = function (_Component) {
       var aspectratio = this.props.width / this.props.height;
 
       var targetPosition = new _three2.default.Vector3(0, 0, 0);
-      var cameraPosition = new _three2.default.Vector3(13, 2, -3);
+      var lightPosition = new _three2.default.Vector3(-10, 10, -10);
 
       var cameraprops = { fov: 75, aspect: aspectratio,
         near: 1, far: 5000,
-        position: cameraPosition,
         lookat: targetPosition };
 
-      var meshPositions = [new _three2.default.Vector3(-2, -9, 0), new _three2.default.Vector3(-5, -9, 1), new _three2.default.Vector3(-5, -9, -1), new _three2.default.Vector3(-8, -9, 2), new _three2.default.Vector3(-8, -9, 0), new _three2.default.Vector3(-8, -9, -2), new _three2.default.Vector3(-11, -9, -3), new _three2.default.Vector3(-11, -9, -1), new _three2.default.Vector3(-11, -9, 1), new _three2.default.Vector3(-11, -9, 3)];
+      var meshPositions = [new _three2.default.Vector3(0, 0, 0), new _three2.default.Vector3(1.5, 0, 1.5), new _three2.default.Vector3(1.5, 0, -1.5), new _three2.default.Vector3(3, 0, -3), new _three2.default.Vector3(3, 0, 3), new _three2.default.Vector3(3, 0, 0), new _three2.default.Vector3(4.5, 0, 1.5), new _three2.default.Vector3(4.5, 0, -1.5), new _three2.default.Vector3(4.5, 0, 4.5), new _three2.default.Vector3(4.5, 0, -4.5)];
 
       var ballPosition = new _three2.default.Vector3(4, -6, 0);
 
@@ -58723,10 +58807,9 @@ var ThreeDTitle = function (_Component) {
         _react2.default.createElement(
           _reactThree.Scene,
           { transparent: true, width: this.props.width, height: this.props.height, ref: 'model', camera: 'maincamera' },
-          _react2.default.createElement(_reactThree.DirectionalLight, { color: 0xFFFFFF, intensity: 0.5, position: cameraPosition }),
+          _react2.default.createElement(_reactThree.DirectionalLight, { color: 0xFFFFFF, intensity: 0.5, position: lightPosition }),
           _react2.default.createElement(_reactThree.HemisphereLight, { skyColor: 0xFEFFF0 }),
-          _react2.default.createElement(_reactThree.PerspectiveCamera, _extends({ name: 'maincamera' }, cameraprops)),
-          _react2.default.createElement(_reactThree.Mesh, { position: ballPosition, geometry: this.state.bowlingBallGeometry, material: this.state.bowlingBallMaterial }),
+          _react2.default.createElement(_OrbitCamera2.default, { cameraprops: cameraprops, distance: -10, azimuth: this.state.cameraazimuth }),
           meshPositions.map(function (position, index) {
             return _react2.default.createElement(_reactThree.Mesh, { position: position, key: index, geometry: _this2.state.geometry, material: _this2.state.material });
           })
@@ -58740,7 +58823,7 @@ var ThreeDTitle = function (_Component) {
 
 exports.default = ThreeDTitle;
 
-},{"react":168,"react-three":12,"three":178}],184:[function(require,module,exports){
+},{"./OrbitCamera":181,"react":168,"react-three":12,"three":178}],185:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -58779,7 +58862,7 @@ var Title = function (_Component) {
         _react2.default.createElement(
           "h1",
           null,
-          "Bowlings!"
+          "Bowling Simulator"
         )
       );
     }
@@ -58790,7 +58873,7 @@ var Title = function (_Component) {
 
 exports.default = Title;
 
-},{"react":168}],185:[function(require,module,exports){
+},{"react":168}],186:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -58853,7 +58936,7 @@ var App = function (_Component) {
 
 exports.default = App;
 
-},{"../components/Monitor":180,"../components/ThreeDTitle":183,"../store/configureStore":190,"react":168,"react-redux":5}],186:[function(require,module,exports){
+},{"../components/Monitor":180,"../components/ThreeDTitle":184,"../store/configureStore":191,"react":168,"react-redux":5}],187:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -58882,7 +58965,7 @@ var store = (0, _configureStore2.default)();
   _react2.default.createElement(_App2.default, null)
 ), document.getElementById('root'));
 
-},{"./containers/App":185,"./store/configureStore":190,"react":168,"react-dom":2,"react-redux":5}],187:[function(require,module,exports){
+},{"./containers/App":186,"./store/configureStore":191,"react":168,"react-dom":2,"react-redux":5}],188:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58988,7 +59071,7 @@ function game() {
   }
 }
 
-},{}],188:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -59014,7 +59097,7 @@ var rootReducer = (0, _redux.combineReducers)({
 
 exports.default = rootReducer;
 
-},{"./game":187,"./monitor":189,"redux":174}],189:[function(require,module,exports){
+},{"./game":188,"./monitor":190,"redux":174}],190:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -59022,7 +59105,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = monitor;
 var initialState = {
-  powerOn: true
+  powerOn: false
 };
 
 function monitor() {
@@ -59041,7 +59124,7 @@ function monitor() {
   }
 }
 
-},{}],190:[function(require,module,exports){
+},{}],191:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -59063,7 +59146,7 @@ function configureStore(initialState) {
   return store;
 }
 
-},{"../reducers":188,"redux":174}]},{},[186])
+},{"../reducers":189,"redux":174}]},{},[187])
 
 
 //# sourceMappingURL=map/build.js.map

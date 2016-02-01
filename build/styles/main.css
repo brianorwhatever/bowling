@@ -56,7 +56,7 @@ table {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   height: 0;
-  width: 300px;
+  width: 360px;
   margin-left: auto;
   margin-right: auto;
   border-bottom: 1px solid #F0EAD6; }
@@ -85,21 +85,25 @@ table {
 .switch-label {
   display: inline-block;
   cursor: pointer;
-  background: #C51000;
-  color: #111;
-  padding: 7px;
-  padding-left: 15px;
-  padding-right: 15px;
+  background: rgba(197, 16, 0, 0.7);
+  padding: 7px 10px 7px 11px;
+  text-shadow: 0 -1px 0 #777;
   border-radius: 5px;
   margin: 10px 0;
-  box-shadow: 1px -2px #5f0800; }
+  box-shadow: 1px -2px #5f0800;
+  font-size: 8px;
+  color: #CCC;
+  letter-spacing: 3px;
+  font-family: Verdana, Geneva, sans-serif;
+  text-align: center;
+  font-weight: bold; }
   .switch-label:active {
     box-shadow: none;
     transform: translate3d(1px, -2px, 0); }
 
 .monitor {
-  width: 300px;
-  height: 200px;
+  width: 360px;
+  height: 230px;
   position: relative;
   overflow: hidden;
   border: 1px solid #333;
@@ -139,7 +143,8 @@ table {
   height: 100%;
   border: none;
   border-radius: 9px;
-  background-color: #3c64ff; }
+  background-color: #3c64ff;
+  visibility: hidden; }
 
 .monitor.off .screen {
   animation: turn-off 0.55s cubic-bezier(0.23, 1, 0.32, 1);
@@ -147,7 +152,8 @@ table {
 
 .monitor.on .screen {
   animation: turn-on 4s linear;
-  animation-fill-mode: forwards; }
+  animation-fill-mode: forwards;
+  visibility: visible; }
 
 .overlay {
   color: #00FF00;
@@ -217,47 +223,47 @@ table {
 
 @keyframes flicker {
   0% {
-    opacity: 0.27617; }
+    opacity: 0.33168; }
   5% {
-    opacity: 0.12252; }
+    opacity: 0.22332; }
   10% {
-    opacity: 0.63428; }
+    opacity: 0.51111; }
   15% {
-    opacity: 0.66896; }
+    opacity: 0.74714; }
   20% {
-    opacity: 0.85015; }
+    opacity: 0.9206; }
   25% {
-    opacity: 0.37182; }
+    opacity: 0.20536; }
   30% {
-    opacity: 0.05207; }
+    opacity: 0.43824; }
   35% {
-    opacity: 0.15906; }
+    opacity: 0.35782; }
   40% {
-    opacity: 0.09979; }
+    opacity: 0.94905; }
   45% {
-    opacity: 0.69789; }
+    opacity: 0.44329; }
   50% {
-    opacity: 0.46859; }
+    opacity: 0.94657; }
   55% {
-    opacity: 0.37037; }
+    opacity: 0.65897; }
   60% {
-    opacity: 0.17521; }
+    opacity: 0.91247; }
   65% {
-    opacity: 0.62463; }
+    opacity: 0.72497; }
   70% {
-    opacity: 0.5115; }
+    opacity: 0.30236; }
   75% {
-    opacity: 0.9671; }
+    opacity: 0.95361; }
   80% {
-    opacity: 0.19074; }
+    opacity: 0.5384; }
   85% {
-    opacity: 0.78622; }
+    opacity: 0.57708; }
   90% {
-    opacity: 0.39636; }
+    opacity: 0.31573; }
   95% {
-    opacity: 0.41594; }
+    opacity: 0.96922; }
   100% {
-    opacity: 0.70976; } }
+    opacity: 0.75263; } }
 
 .threed-wrapper {
   width: 500px;
@@ -280,14 +286,13 @@ body, h1 {
   justify-content: center; }
 
 .title {
-  text-align: center;
-  background-color: #3c64ff; }
+  text-align: center; }
   .title h1 {
     padding: 20px;
     font-size: 30px;
+    font-weight: 300;
     color: white;
     font-family: 'VT323';
-    appearance: none;
     box-shadow: none; }
 
 .bowl-button-container {
@@ -299,6 +304,7 @@ body, h1 {
     font-size: 25px;
     color: white;
     font-family: 'VT323';
+    font-weight: 300;
     background-color: #A1A1A1;
     border-color: white;
     border-width: 8px; }
@@ -307,27 +313,27 @@ body, h1 {
       cursor: pointer; }
 
 .score-container {
-  padding: 10px;
-  font-size: 15px;
+  padding: 10px 0;
+  font-size: 16px;
   text-align: center;
   color: white; }
   .score-container .frame {
     border: 3px solid white;
     border-right: 0;
     display: inline-block;
-    width: 36px;
-    height: 36px; }
+    width: 30px;
+    height: 30px; }
     .score-container .frame:last-child {
       border-right: 3px solid white;
-      width: 54px; }
+      width: 45px; }
     .score-container .frame .balls {
-      height: 18px; }
+      height: 15px; }
       .score-container .frame .balls .ball {
         display: inline-block;
         text-align: center;
-        width: 18px;
-        height: 18px; }
+        width: 15px;
+        height: 15px; }
       .score-container .frame .balls .ball2, .score-container .frame .balls .ball3 {
         background-color: white;
         color: #3c64ff;
-        height: 18px; }
+        height: 15px; }

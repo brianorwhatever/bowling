@@ -6,7 +6,7 @@
 
 /* Main styles */
 
-$boxSize: 18px;
+$boxSize: 15px;
 
 body, h1 {
   font-family: 'VT323';
@@ -28,13 +28,12 @@ body, h1 {
 
 .title {
   text-align: center;
-  background-color: $blue;
   h1 {
     padding: 20px;
     font-size: 30px;
+    font-weight: 300;
     color: $white;
     font-family: 'VT323';
-    appearance: none;
     box-shadow: none;
   }
 }
@@ -48,6 +47,7 @@ body, h1 {
     font-size: 25px;
     color: $white;
     font-family: 'VT323';
+    font-weight: 300;
     background-color: #A1A1A1;
     border-color: $white;
     border-width: 8px;
@@ -59,8 +59,8 @@ body, h1 {
 }
 
 .score-container {
-  padding: 10px;
-  font-size: 15px;
+  padding: 10px 0;
+  font-size: 16px;
   text-align: center;
   color: $white;
   .frame {

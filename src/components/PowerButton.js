@@ -16,7 +16,7 @@ class PowerButton extends Component {
     return (
       <div className="power-button-container">
         <input type="checkbox" onChange={this.buttonClicked} id="switch" value={store.getState().monitor.powerOn} />
-        <label htmlFor="switch" className="switch-label" />
+        <label htmlFor="switch" className="switch-label">I/O</label>
       </div>
     )
   }

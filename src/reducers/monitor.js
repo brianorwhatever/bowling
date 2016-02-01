@@ -1,5 +1,5 @@
 const initialState = {
-  powerOn: true
+  powerOn: false
 }
 
 export default function monitor(state = initialState, action) {
