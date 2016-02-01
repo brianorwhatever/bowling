@@ -34,6 +34,13 @@
   }
 }
 
+#small-screen {
+  height: 100vh;
+  padding: 40px;
+  background-color: $blue;
+  color: white;
+}
+
 $boxSize: 15px;
 
 body, h1 {

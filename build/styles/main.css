@@ -143,8 +143,7 @@ table {
   height: 100%;
   border: none;
   border-radius: 9px;
-  background-color: #3c64ff;
-  visibility: hidden; }
+  background-color: #3c64ff; }
 
 .monitor.off .screen {
   animation: turn-off 0.55s cubic-bezier(0.23, 1, 0.32, 1);
@@ -152,8 +151,7 @@ table {
 
 .monitor.on .screen {
   animation: turn-on 4s linear;
-  animation-fill-mode: forwards;
-  visibility: visible; }
+  animation-fill-mode: forwards; }
 
 .overlay {
   color: #00FF00;
@@ -223,47 +221,47 @@ table {
 
 @keyframes flicker {
   0% {
-    opacity: 0.98936; }
+    opacity: 0.24; }
   5% {
-    opacity: 0.44552; }
+    opacity: 0.63472; }
   10% {
-    opacity: 0.32735; }
+    opacity: 0.41296; }
   15% {
-    opacity: 0.30248; }
+    opacity: 0.88002; }
   20% {
-    opacity: 0.44667; }
+    opacity: 0.20445; }
   25% {
-    opacity: 0.8251; }
+    opacity: 0.10927; }
   30% {
-    opacity: 0.61098; }
+    opacity: 0.68804; }
   35% {
-    opacity: 0.20002; }
+    opacity: 0.00944; }
   40% {
-    opacity: 0.66643; }
+    opacity: 0.87005; }
   45% {
-    opacity: 0.46165; }
+    opacity: 0.78862; }
   50% {
-    opacity: 0.93123; }
+    opacity: 0.73415; }
   55% {
-    opacity: 0.04917; }
+    opacity: 0.84164; }
   60% {
-    opacity: 0.27694; }
+    opacity: 0.0772; }
   65% {
-    opacity: 0.73585; }
+    opacity: 0.2064; }
   70% {
-    opacity: 0.75521; }
+    opacity: 0.17826; }
   75% {
-    opacity: 0.36159; }
+    opacity: 0.05656; }
   80% {
-    opacity: 0.8311; }
+    opacity: 0.67295; }
   85% {
-    opacity: 0.41434; }
+    opacity: 0.77352; }
   90% {
-    opacity: 0.93562; }
+    opacity: 0.01349; }
   95% {
-    opacity: 0.99059; }
+    opacity: 0.11413; }
   100% {
-    opacity: 0.38326; } }
+    opacity: 0.49525; } }
 
 .threed-wrapper {
   width: 500px;
@@ -288,6 +286,12 @@ table {
     display: block; }
   #small-screen {
     display: none; } }
+
+#small-screen {
+  height: 100vh;
+  padding: 40px;
+  background-color: #3c64ff;
+  color: white; }
 
 body, h1 {
   font-family: 'VT323';
