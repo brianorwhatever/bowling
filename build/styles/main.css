@@ -48,9 +48,6 @@ table {
 
 /* found this flicker at http://codepen.io/lbebber/pen/XJRdrV/ */
 /* Outer area of monitor */
-.monitor-container {
-  flex: 0; }
-
 .monitor-bottom {
   border-top: 10px solid #F0EAD6;
   border-left: 10px solid transparent;
@@ -99,7 +96,8 @@ table {
   font-weight: bold; }
   .switch-label:active {
     box-shadow: none;
-    transform: translate3d(1px, -2px, 0); }
+    -webkit-transform: translate3d(1px, -2px, 0);
+            transform: translate3d(1px, -2px, 0); }
 
 .monitor {
   width: 360px;
@@ -130,13 +128,15 @@ table {
     left: 0;
     bottom: 0;
     right: 0;
+    background: -webkit-linear-gradient(rgba(60, 100, 255, 0) 50%, rgba(60, 100, 255, 0.25) 50%), -webkit-linear-gradient(left, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
     background: linear-gradient(rgba(60, 100, 255, 0) 50%, rgba(60, 100, 255, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
     z-index: 2;
     background-size: 100% 2px, 3px 100%;
     pointer-events: none; }
 
 .monitor.on::after {
-  animation: flicker 0.15s infinite; }
+  -webkit-animation: flicker 0.15s infinite;
+          animation: flicker 0.15s infinite; }
 
 .screen {
   width: 100%;
@@ -146,12 +146,16 @@ table {
   background-color: #3c64ff; }
 
 .monitor.off .screen {
-  animation: turn-off 0.55s cubic-bezier(0.23, 1, 0.32, 1);
-  animation-fill-mode: forwards; }
+  -webkit-animation: turn-off 0.55s cubic-bezier(0.23, 1, 0.32, 1);
+          animation: turn-off 0.55s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
 
 .monitor.on .screen {
-  animation: turn-on 4s linear;
-  animation-fill-mode: forwards; }
+  -webkit-animation: turn-on 4s linear;
+          animation: turn-on 4s linear;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
 
 .overlay {
   color: #00FF00;
@@ -163,8 +167,20 @@ table {
   pointer-events: none; }
 
 .monitor.on .overlay {
-  animation: overlay-anim 5s linear;
-  animation-fill-mode: forwards; }
+  -webkit-animation: overlay-anim 5s linear;
+          animation: overlay-anim 5s linear;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
+
+@-webkit-keyframes overlay-anim {
+  0% {
+    visibility: hidden; }
+  20% {
+    visibility: hidden; }
+  21% {
+    visibility: visible; }
+  100% {
+    visibility: hidden; } }
 
 @keyframes overlay-anim {
   0% {
@@ -176,96 +192,207 @@ table {
   100% {
     visibility: hidden; } }
 
-@keyframes turn-on {
+@-webkit-keyframes turn-on {
   0% {
-    transform: scale(1, 0.8) translate3d(0, 0, 0);
+    -webkit-transform: scale(1, 0.8) translate3d(0, 0, 0);
+            transform: scale(1, 0.8) translate3d(0, 0, 0);
     -webkit-filter: brightness(30);
     filter: brightness(30);
     opacity: 1; }
   3.5% {
-    transform: scale(1, 0.8) translate3d(0, 100%, 0); }
+    -webkit-transform: scale(1, 0.8) translate3d(0, 100%, 0);
+            transform: scale(1, 0.8) translate3d(0, 100%, 0); }
   3.6% {
-    transform: scale(1, 0.8) translate3d(0, -100%, 0);
+    -webkit-transform: scale(1, 0.8) translate3d(0, -100%, 0);
+            transform: scale(1, 0.8) translate3d(0, -100%, 0);
     opacity: 1; }
   9% {
-    transform: scale(1.3, 0.6) translate3d(0, 100%, 0);
+    -webkit-transform: scale(1.3, 0.6) translate3d(0, 100%, 0);
+            transform: scale(1.3, 0.6) translate3d(0, 100%, 0);
     -webkit-filter: brightness(30);
     filter: brightness(30);
     opacity: 0; }
   11% {
-    transform: scale(1, 1) translate3d(0, 0, 0);
+    -webkit-transform: scale(1, 1) translate3d(0, 0, 0);
+            transform: scale(1, 1) translate3d(0, 0, 0);
     -webkit-filter: contrast(0) brightness(0);
     filter: contrast(0) brightness(0);
     opacity: 0; }
   100% {
-    transform: scale(1, 1) translate3d(0, 0, 0);
+    -webkit-transform: scale(1, 1) translate3d(0, 0, 0);
+            transform: scale(1, 1) translate3d(0, 0, 0);
     -webkit-filter: contrast(1) brightness(1.2) saturate(1.3);
     filter: contrast(1) brightness(1.2) saturate(1.3);
     opacity: 1; } }
 
-@keyframes turn-off {
+@keyframes turn-on {
   0% {
-    transform: scale(1, 1.3) translate3d(0, 0, 0);
+    -webkit-transform: scale(1, 0.8) translate3d(0, 0, 0);
+            transform: scale(1, 0.8) translate3d(0, 0, 0);
+    -webkit-filter: brightness(30);
+    filter: brightness(30);
+    opacity: 1; }
+  3.5% {
+    -webkit-transform: scale(1, 0.8) translate3d(0, 100%, 0);
+            transform: scale(1, 0.8) translate3d(0, 100%, 0); }
+  3.6% {
+    -webkit-transform: scale(1, 0.8) translate3d(0, -100%, 0);
+            transform: scale(1, 0.8) translate3d(0, -100%, 0);
+    opacity: 1; }
+  9% {
+    -webkit-transform: scale(1.3, 0.6) translate3d(0, 100%, 0);
+            transform: scale(1.3, 0.6) translate3d(0, 100%, 0);
+    -webkit-filter: brightness(30);
+    filter: brightness(30);
+    opacity: 0; }
+  11% {
+    -webkit-transform: scale(1, 1) translate3d(0, 0, 0);
+            transform: scale(1, 1) translate3d(0, 0, 0);
+    -webkit-filter: contrast(0) brightness(0);
+    filter: contrast(0) brightness(0);
+    opacity: 0; }
+  100% {
+    -webkit-transform: scale(1, 1) translate3d(0, 0, 0);
+            transform: scale(1, 1) translate3d(0, 0, 0);
+    -webkit-filter: contrast(1) brightness(1.2) saturate(1.3);
+    filter: contrast(1) brightness(1.2) saturate(1.3);
+    opacity: 1; } }
+
+@-webkit-keyframes turn-off {
+  0% {
+    -webkit-transform: scale(1, 1.3) translate3d(0, 0, 0);
+            transform: scale(1, 1.3) translate3d(0, 0, 0);
     -webkit-filter: brightness(1);
     filter: brightness(1);
     opacity: 1; }
   60% {
-    transform: scale(1.3, 0.001) translate3d(0, 0, 0);
+    -webkit-transform: scale(1.3, 0.001) translate3d(0, 0, 0);
+            transform: scale(1.3, 0.001) translate3d(0, 0, 0);
     -webkit-filter: brightness(10);
     filter: brightness(10); }
   100% {
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transform: scale(0, 0.0001) translate3d(0, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+            animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transform: scale(0, 0.0001) translate3d(0, 0, 0);
+            transform: scale(0, 0.0001) translate3d(0, 0, 0);
     -webkit-filter: brightness(50);
     filter: brightness(50); } }
 
+@keyframes turn-off {
+  0% {
+    -webkit-transform: scale(1, 1.3) translate3d(0, 0, 0);
+            transform: scale(1, 1.3) translate3d(0, 0, 0);
+    -webkit-filter: brightness(1);
+    filter: brightness(1);
+    opacity: 1; }
+  60% {
+    -webkit-transform: scale(1.3, 0.001) translate3d(0, 0, 0);
+            transform: scale(1.3, 0.001) translate3d(0, 0, 0);
+    -webkit-filter: brightness(10);
+    filter: brightness(10); }
+  100% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+            animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transform: scale(0, 0.0001) translate3d(0, 0, 0);
+            transform: scale(0, 0.0001) translate3d(0, 0, 0);
+    -webkit-filter: brightness(50);
+    filter: brightness(50); } }
+
+@-webkit-keyframes flicker {
+  0% {
+    opacity: 0.14433; }
+  5% {
+    opacity: 0.04732; }
+  10% {
+    opacity: 0.42027; }
+  15% {
+    opacity: 0.38281; }
+  20% {
+    opacity: 0.02605; }
+  25% {
+    opacity: 0.29752; }
+  30% {
+    opacity: 0.00319; }
+  35% {
+    opacity: 0.07272; }
+  40% {
+    opacity: 0.63709; }
+  45% {
+    opacity: 0.2605; }
+  50% {
+    opacity: 0.11183; }
+  55% {
+    opacity: 0.17587; }
+  60% {
+    opacity: 0.90989; }
+  65% {
+    opacity: 0.96048; }
+  70% {
+    opacity: 0.55195; }
+  75% {
+    opacity: 0.39631; }
+  80% {
+    opacity: 0.06184; }
+  85% {
+    opacity: 0.22898; }
+  90% {
+    opacity: 0.58188; }
+  95% {
+    opacity: 0.52379; }
+  100% {
+    opacity: 0.74833; } }
+
 @keyframes flicker {
   0% {
-    opacity: 0.24; }
+    opacity: 0.14433; }
   5% {
-    opacity: 0.63472; }
+    opacity: 0.04732; }
   10% {
-    opacity: 0.41296; }
+    opacity: 0.42027; }
   15% {
-    opacity: 0.88002; }
+    opacity: 0.38281; }
   20% {
-    opacity: 0.20445; }
+    opacity: 0.02605; }
   25% {
-    opacity: 0.10927; }
+    opacity: 0.29752; }
   30% {
-    opacity: 0.68804; }
+    opacity: 0.00319; }
   35% {
-    opacity: 0.00944; }
+    opacity: 0.07272; }
   40% {
-    opacity: 0.87005; }
+    opacity: 0.63709; }
   45% {
-    opacity: 0.78862; }
+    opacity: 0.2605; }
   50% {
-    opacity: 0.73415; }
+    opacity: 0.11183; }
   55% {
-    opacity: 0.84164; }
+    opacity: 0.17587; }
   60% {
-    opacity: 0.0772; }
+    opacity: 0.90989; }
   65% {
-    opacity: 0.2064; }
+    opacity: 0.96048; }
   70% {
-    opacity: 0.17826; }
+    opacity: 0.55195; }
   75% {
-    opacity: 0.05656; }
+    opacity: 0.39631; }
   80% {
-    opacity: 0.67295; }
+    opacity: 0.06184; }
   85% {
-    opacity: 0.77352; }
+    opacity: 0.22898; }
   90% {
-    opacity: 0.01349; }
+    opacity: 0.58188; }
   95% {
-    opacity: 0.11413; }
+    opacity: 0.52379; }
   100% {
-    opacity: 0.49525; } }
+    opacity: 0.74833; } }
 
 .threed-wrapper {
   width: 500px;
-  flex: 1; }
+  height: 300px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1; }
 
 @font-face {
   font-family: 'bowloramaregular';
@@ -307,15 +434,29 @@ body, h1 {
   text-shadow: 3px -3px 0 #b8b9ff; }
 
 .app-wrapper {
+  position: relative;
   background-image: url("../images/bowling-alley2.jpg");
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
   height: 100vh;
   width: 100vw;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; }
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
 
 .title {
   text-align: center; }

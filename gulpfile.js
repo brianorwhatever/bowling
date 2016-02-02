@@ -14,6 +14,7 @@ var merge = require('utils-merge'); // Object merge tool
 var duration = require('gulp-duration'); // Time aspects of your gulp process
 var connect = require('gulp-connect');
 var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
 
 // Configuration for Gulp
 var config = {
@@ -116,6 +117,7 @@ gulp.task('sass', function() {
   gulp.watch(config.css.src, function(){
     gulp.src(config.css.src)
       .pipe(sass.sync().on('error', sass.logError))
+      .pipe(autoprefixer())
       .pipe(gulp.dest(config.css.outputDir))
       .pipe(connect.reload());
   });
